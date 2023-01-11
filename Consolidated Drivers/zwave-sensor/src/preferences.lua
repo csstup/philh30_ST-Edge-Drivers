@@ -125,6 +125,23 @@ local devices = {
       assocGroup2          = { type = 'assoc', group = 2, maxnodes = 5, addhub = false }
     }
   },
+  HOMESEER_MS100PLUS = {
+    MATCHING_MATRIX = {
+      mfrs = 0x000C,
+      product_types = 0x0201,
+      product_ids = 0x0009
+    },
+    PARAMETERS = {
+      motionSensitivityLvl = { type = 'config', parameter_number = 12, size = 1 },  -- P12: Motion Sensor Sensitivity
+      basicSetCommand      = { type = 'config', parameter_number = 14, size = 1 },  -- P14: BasicSet enabled/disabled
+      shockSensor          = { type = 'config', parameter_number = 17, size = 1 },  -- P17: Enable Shock Sensor
+      motionTimeoutInterval= { type = 'config', parameter_number = 18, size = 2 },  -- P18: Motion Timeout Interval
+
+      wakeUpInterval       = { type = 'wakeup' }, -- Wake up interval, preference is in seconds
+
+      assocGroup2          = { type = 'assoc', group = 2, maxnodes = 5, addhub = false }
+    }
+  },
   ECOLINK_TILT2 = {  -- Ecolink Tilt Sensor TILT-ZWAVE2 (zwave) & Door/Window Sensor DW-ZWAVE2 (zwave)
     MATCHING_MATRIX = {
       mfrs          = 0x014A,
@@ -177,7 +194,7 @@ preferences.update_preferences = function(driver, device, args)
           new_parameter_value = ((new_parameter_value >= (256^size)/2) and (new_parameter_value < 256^size)) and (new_parameter_value-256^size) or new_parameter_value
           device:send(Configuration:Set({parameter_number = prefs[id].parameter_number, size = size, configuration_value = new_parameter_value}))
           table.insert(get_params, prefs[id].parameter_number)
-        elseif prefs[id].type == 'wakeup' then
+        elseif prefs[id].type == 'wakeup' and device:is_cc_supported(cc.WAKEUP) then
           local wakeUpInterval = preferences.to_numeric_value(device.preferences[id])
           if type(prefs[id].conversion) == "function" then
             wakeUpInterval = prefs[id].conversion(wakeUpInterval)

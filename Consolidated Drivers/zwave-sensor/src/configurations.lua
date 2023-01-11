@@ -368,7 +368,17 @@ local devices = {
     ASSOCIATION = {
       {grouping_identifier = 1}
     }
-  }
+  },
+  HOMESEER_MS100 = {
+    MATCHING_MATRIX = {
+      mfrs = {0x000C},
+      product_types = {0x0201},
+      product_ids = {0x0009}
+    },
+    CONFIGURATION = {
+      {parameter_number = 19, configuration_value = 0, size = 1},   -- P19 - Enable Binary Sensor for Motion.  0 = use Notification alerts  1 = Use Binary Sensor alerts
+    }
+  },  
 }
 local configurations = {}
 

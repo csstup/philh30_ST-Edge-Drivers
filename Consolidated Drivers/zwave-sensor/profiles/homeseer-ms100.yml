@@ -1,0 +1,75 @@
+name: homeseer-ms100
+components:
+- id: main
+  capabilities:
+  - id: motionSensor
+    version: 1
+  - id: tamperAlert
+    version: 1
+  - id: powerSource
+    version: 1    
+  - id: platemusic11009.deviceNetworkId
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: MotionSensor
+preferences:
+  - name: "driverVersion"
+    title: "Driver Version"
+    description: "<table style=\"font-size:100%;width:100%\"><tr><td>V0.91 2022-09-19.</td></tr><tr><td>Supports the HomeSeer HS-MS100+ Motion Sensor.</td></tr></table>"
+    required: false
+    preferenceType: boolean
+    definition:
+      default: false
+  - name: "motionSensitivityLvl"
+    title: "Motion Sensor Sensitivity"
+    description: "Level of sensitivity to trigger motion alerts.  Default = 8 - Highest Sensitivity."
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Motion Disabled"
+        1: "1 - Low Sensitivity"
+        2: "2"
+        3: "3"
+        4: "4"
+        5: "5"
+        6: "6"
+        7: "7" 
+        8: "8 - Highest Sensitivity"                                                 
+      default: 8
+  - name: "motionTimeoutInterval"
+    title: "Motion Sensor Timeout Seconds"
+    description: "Number of seconds of cooldown period before motion can be sensed again.  600 seconds (10 minutes) default."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 65525
+      default: 600     
+  - name: "shockSensor"
+    title: "Shock Sensor"
+    description: "Enable Shock Sensor reporting.  Shock will trigger a tamper alert.  Disabled by default to conserve battery life."
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Disabled"
+        1: "Enabled"
+      default: 0
+  - name: "basicSetCommand"
+    title: "Basic Set Command"
+    description: "Enable Basic Set Command for reporting motion to association group 2.  Disabled by default."
+    required: true
+    preferenceType: boolean
+    definition:
+      default: false
+  - title: "Association Group 2 (Basic Set)"
+    name: assocGroup2
+    description: "Enter a comma delimited list of hex IDs. Motion Sensor will send Basic Set to associated nodes when motion detected. 5 node max."
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      default: ""

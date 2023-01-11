@@ -26,6 +26,8 @@ local Association = (require "st.zwave.CommandClass.Association")({ version=2 })
 --- @type st.zwave.CommandClass.WakeUp
 local WakeUp = (require "st.zwave.CommandClass.WakeUp")({ version=1 })
 
+local utils = require("st.utils")
+
 local preferences = require "preferences"
 local configurations = require "configurations"
 
@@ -53,6 +55,8 @@ end
 --- @param event table
 --- @param args
 local function info_changed(self, device, event, args)
+  print(utils.stringify_table(device.st_store.profile.components, "info_changed:device.st_store.profile.components", true))
+
   if not device:is_cc_supported(cc.WAKE_UP) then
     preferences.update_preferences(self, device, args)
   end
@@ -64,11 +68,43 @@ local function device_init(self, device)
   device:set_update_preferences_fn(preferences.update_preferences)
 end
 
+local zw = require "st.zwave"
+
+function debug_pretty_print(self)
+  outputString = "My Z-Wave Device: " .. self.id .. "\n"
+  if (self.zwave_manufacturer_id ~= nil and self.zwave_product_type ~= nil and self.zwave_product_id ~= nil) then
+    outputString = outputString .. string.format("Manufacturer: 0x%04X Product Type: 0x%04X Product ID: 0x%04X",
+      self.zwave_manufacturer_id, self.zwave_product_type, self.zwave_product_id) .. "\n"
+    if(self.zwave_endpoints ~= nil) then
+      for index, endpoint in pairs(self.zwave_endpoints) do
+        command_classes = ""
+        for _, cc in ipairs(endpoint.command_classes) do
+          command_classes = command_classes .. string.format("%s, ", zw.cc_to_string(cc.value))
+        end
+        outputString = outputString .. string.format("\t[%d]: %s",index-1, command_classes:sub(1, -3))
+      end
+    end
+  end
+  return outputString
+end
+
+
 --- @param self st.zwave.Driver
 --- @param device st.zwave.Device
 local function do_configure(driver, device)
   device.log.trace("do_configure()")
+
+  -- print(debug_pretty_print(device))
+
+  -- print(utils.stringify_table( driver.get_default_refresh_commands, "driver.get_default_refresh_commands", true))
+ 
+  -- print(utils.stringify_table(device.zwave_endpoints, "do_configure:device", true))
+  -- print(utils.stringify_table(device, "do_configure:device", true))
+
+  print(utils.stringify_table(device.st_store.profile.components, "do_configure:device.st_store.profile.components", true))
+  
   configurations.initial_configuration(driver, device)
+  device.log.trace("do_configure() calling refresh()")
   device:refresh()
 
   -- Setup the initial preferences
@@ -148,6 +184,7 @@ local driver_template = {
     capabilities.energyMeter,
     capabilities.powerMeter,
     capabilities.smokeDetector,
+    capabilities.powerSource,
     capabilities.refresh,
   },
   sub_drivers = {
@@ -155,7 +192,8 @@ local driver_template = {
     require("ecolink-tilt"),
     require("zooz-motion-sensor"),
     require("fortrezz-leak"),
-    require("homeseer-leak")
+    require("homeseer-leak"),
+    require("homeseer-ms100"),
   },
   lifecycle_handlers = {
     added          = added_handler,
