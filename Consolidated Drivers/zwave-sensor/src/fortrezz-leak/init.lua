@@ -148,7 +148,7 @@ local fortrezz_leak = {
   lifecycle_handlers = {
     --added = dev_added
   },
-  NAME = "zwave fortrezz temp leak sensor",
+  NAME = "FortrezZ Leak Sensor",
   can_handle = can_handle_zwave_temp_leak_sensor,
 }
 

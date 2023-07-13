@@ -142,6 +142,7 @@ local function added_handler(self, device)
       device:emit_event(event)
     end
   end
+  configurations.initial_buttons(self,device)
   updateNetworkId(self, device, device.device_network_id)
 end
 
@@ -185,15 +186,19 @@ local driver_template = {
     capabilities.powerMeter,
     capabilities.smokeDetector,
     capabilities.powerSource,
+    capabilities.button,
     capabilities.refresh,
   },
   sub_drivers = {
     require("sleepy-device"),  -- General support for any sleepy zwave devices
+    require("ecolink-sensor"),
     require("ecolink-tilt"),
-    require("zooz-motion-sensor"),
     require("fortrezz-leak"),
     require("homeseer-leak"),
+    require("ring-contact-2"),
+    require("zooz-motion-sensor"),
     require("homeseer-ms100"),
+    require("zooz-zse41"),
   },
   lifecycle_handlers = {
     added          = added_handler,

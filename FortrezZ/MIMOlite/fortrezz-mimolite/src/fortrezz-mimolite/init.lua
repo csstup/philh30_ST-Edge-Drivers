@@ -30,6 +30,7 @@ local SwitchBinary = (require "st.zwave.CommandClass.SwitchBinary")({version=2})
 local update_preferences = require "update_preferences"
 
 local MIMOLITE_FINGERPRINTS = {
+  {mfr = 0x0084, prod = 0x0453, model = 0x0110},
   {mfr = 0x0084, prod = 0x0453, model = 0x0111},
 }
 
@@ -68,7 +69,7 @@ end
 --- @param driver st.zwave.Driver
 --- @param device st.zwave.Device
 local function basic_set(driver, device, cmd)
-  local evt = (cmd.args.value == 0) and capabilities.contactSensor.contactSensor.closed() or capabilities.contactSensor.contactSensor.open()
+  local evt = (cmd.args.value == 0) and capabilities.contactSensor.contact.closed() or capabilities.contactSensor.contact.open()
   device:emit_event(evt)
   device:emit_event(capabilities.powerSource.powerSource.dc())
   device:send(SensorMultilevel:Get({}))
@@ -77,7 +78,7 @@ end
 --- @param driver st.zwave.Driver
 --- @param device st.zwave.Device
 local function sensor_binary_report(driver, device, cmd)
-  local evt = (cmd.args.value == 0) and capabilities.contactSensor.contactSensor.closed() or capabilities.contactSensor.contactSensor.open()
+  local evt = (cmd.args.sensor_value == 0) and capabilities.contactSensor.contact.closed() or capabilities.contactSensor.contact.open()
   device:emit_event(evt)
   device:emit_event(capabilities.powerSource.powerSource.dc())
 end
@@ -98,7 +99,7 @@ end
 --- @param driver st.zwave.Driver
 --- @param device st.zwave.Device
 local function sensor_multilevel_report(driver, device, cmd)
-  local volt = calc_voltage(cmd.args.value)
+  local volt = calc_voltage(cmd.args.sensor_value)
   local evt = capabilities.voltageMeasurement.voltage({value=volt,unit="V"})
   device:emit_event(evt)
   device:emit_event(capabilities.powerSource.powerSource.dc())
