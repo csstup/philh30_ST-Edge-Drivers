@@ -165,26 +165,6 @@ local devices = {
       assocGroup2          = {type = 'assoc', group = 2, maxnodes = 5, addhub = false},
     }
   },
-  HOMESEER_LS100PLUS = {
-    MATCHING_MATRIX = {
-      mfrs = 0x000C,
-      product_types = 0x0201,
-      product_ids = 0x000A
-    },
-    PARAMETERS = {
-      basicSetCommand      = { type = 'config', parameter_number = 14, size = 1 },  -- P14: BasicSet enabled/disabled
-      leakReportInterval   = { type = 'config', parameter_number = 17, size = 1 },  -- P17: Leak reporting interval
-      shockSensor          = { type = 'config', parameter_number = 18, size = 1 },  -- P18: Enable Shock Sensor
-      tempReportInterval   = { type = 'config', parameter_number = 19, size = 1 },  -- P19: Temperature reporting interval
-      tempTriggerHighValue = { type = 'config', parameter_number = 20, size = 2, conversion = preferences.temp_multiplier },  -- P20:
-      tempTriggerLowValue  = { type = 'config', parameter_number = 22, size = 2, conversion = preferences.temp_multiplier },  -- P22:
-      blinkLEDAlarm        = { type = 'config', parameter_number = 24, size = 1 },  -- P24: Blink LED with alarm
-
-      wakeUpInterval       = { type = 'wakeup', conversion = preferences.hours_to_seconds }, -- Wake up interval, is in hours (0-744)
-
-      assocGroup2          = { type = 'assoc', group = 2, maxnodes = 5, addhub = false }
-    }
-  },
   HOMESEER_MS100PLUS = {
     MATCHING_MATRIX = {
       mfrs = 0x000C,
@@ -200,33 +180,6 @@ local devices = {
       wakeUpInterval       = { type = 'wakeup' }, -- Wake up interval, preference is in seconds
 
       assocGroup2          = { type = 'assoc', group = 2, maxnodes = 5, addhub = false }
-    }
-  },
-  ECOLINK_TILT2 = {  -- Ecolink Tilt Sensor TILT-ZWAVE2 (zwave) & Door/Window Sensor DW-ZWAVE2 (zwave)
-    MATCHING_MATRIX = {
-      mfrs          = 0x014A,
-      product_types = 0x0001,
-      product_ids   = {0x0002,0x0003}
-    }, 
-    PARAMETERS = {
-      wakeUpInterval       = { type = 'wakeup' }, -- Wake up interval, preference is in seconds
-
-      assocGroup2          = { type = 'assoc', group = 2, maxnodes = 3, addhub = false }
-    }
-  },
-  ECOLINK_TILT_CONTACT_25 = {  -- Ecolink Tilt Sensor TILT-ZWAVE2.5-ECO (zwave plus) & Door/Window Sensor DW-ZWAVE2.5 (zwave plus)
-    MATCHING_MATRIX = {
-      mfrs          = 0x014A,
-      product_types = 0x0004,
-      product_ids   = {0x0002,0x0003}
-    }, 
-    PARAMETERS = {
-      basicSetCommand      = { type = 'config', parameter_number = 1, size = 1 }, -- P1: BasicSet enabled/disabled for association group 2
-      sensorBinary         = { type = 'config', parameter_number = 2, size = 1 }, -- P2: Disable Binary Reports
-
-      wakeUpInterval       = { type = 'wakeup' }, -- Wake up interval, preference is in seconds
-
-      assocGroup2          = { type = 'assoc', group = 2, maxnodes = 3, addhub = false }
     }
   },
 }
