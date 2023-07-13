@@ -50,6 +50,12 @@ zwaveManufacturer:
     productType: 0x0201
     productId: 0x000A
     deviceProfileName: homeseer-leak    # by default, no temperature
+  - id: "000C/0201/0009"
+    deviceLabel: HomeSeer HS-MS100+ Motion Sensor
+    manufacturerId: 0x000C
+    productType: 0x0201
+    productId: 0x0009
+    deviceProfileName: homeseer-ms100
 # Monoprice
   - id: "monoprice/4in1"
     deviceLabel: Monoprice 4-in-1 sensor
@@ -95,24 +101,6 @@ zwaveManufacturer:
     productType: 0x0202
     productId: 0x0006
     deviceProfileName: zooz-q-sensor
-  - id: "0084/0053/0216"
-    deviceLabel: FortrezZ Temperature and Leak Sensor
-    manufacturerId: 0x0084
-    productType: 0x0053
-    productId: 0x0216
-    deviceProfileName: fortrezz-leak
-  - id: "000C/0201/0009"
-    deviceLabel: HomeSeer HS-MS100+ Motion Sensor
-    manufacturerId: 0x000C
-    productType: 0x0201
-    productId: 0x0009
-    deviceProfileName: homeseer-ms100  
-  - id: "000C/0201/000A"
-    deviceLabel: HomeSeer HS-LS100+ Leak Sensor
-    manufacturerId: 0x000C
-    productType: 0x0201
-    productId: 0x000A
-    deviceProfileName: homeseer-leak    # by default, no temperature
 zwaveGeneric:
   - id: "GenericSensorAlarm"
     deviceLabel: Z-Wave Sensor
