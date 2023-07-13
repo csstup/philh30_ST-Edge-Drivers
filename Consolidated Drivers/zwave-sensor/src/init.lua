@@ -192,7 +192,6 @@ local driver_template = {
   sub_drivers = {
     require("sleepy-device"),  -- General support for any sleepy zwave devices
     require("ecolink-sensor"),
-    require("ecolink-tilt"),
     require("fortrezz-leak"),
     require("homeseer-leak"),
     require("ring-contact-2"),
