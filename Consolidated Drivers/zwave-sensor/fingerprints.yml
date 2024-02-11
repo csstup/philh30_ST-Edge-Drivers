@@ -64,6 +64,12 @@ zwaveManufacturer:
     productType: 0x2021
     productId: 0x2101
     deviceProfileName: monoprice-4-in-1-sensor
+  - id: "0208/0201/0008"
+    deviceLabel: Monoprice Contact Sensor
+    manufacturerId: 0x0208
+    productType: 0x0201
+    productId: 0x0008
+    deviceProfileName: monoprice-hkzw-dws01
 # Ring
   - id: 0346/0201/0301
     deviceLabel: Ring Contact Sensor 2

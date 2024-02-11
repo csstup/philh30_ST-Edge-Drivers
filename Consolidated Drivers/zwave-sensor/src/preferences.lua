@@ -189,6 +189,17 @@ local devices = {
       wakeUpInterval       = { type = 'wakeup' }, -- Wake up interval, preference is in seconds
     }
   },
+  MONOPRICE_HKZW_DWS01 = {
+    MATCHING_MATRIX = {
+      mfrs          = { 0x0208 },
+      product_types = 0x0201,
+      product_ids   = 0x0008
+    },
+    PARAMETERS = {
+      lowBatteryLevel      = { type = 'config', parameter_number = 32, size = 1},
+      wakeUpInterval       = { type = 'wakeup' }, -- Wake up interval, preference is in seconds
+    }
+  },
 }
 
 preferences.update_preferences = function(driver, device, args)
