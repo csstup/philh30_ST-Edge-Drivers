@@ -165,7 +165,7 @@ local devices = {
       assocGroup2          = {type = 'assoc', group = 2, maxnodes = 5, addhub = false},
     }
   },
-  -- Support for one model of the Vision VP3102, and the Linear WAPIRZ.  Monoprice clones of them as well.
+  -- Support for one model of the Vision ZP3102, and the Linear WAPIRZ.  Monoprice clones of them as well.
   LINEAR_WAPIRZ = {
     MATCHING_MATRIX = {
       mfrs          = { 0x0109, 0x014F, },   -- 109 = Vision, 0x14F = Linear
@@ -174,6 +174,21 @@ local devices = {
     },
     PARAMETERS = {
       retriggerWaitTime    = {type = 'config', parameter_number = 1, size = 1},
+      
+      wakeUpInterval       = { type = 'wakeup' }, -- Wake up interval, preference is in seconds
+    }
+  },
+  -- Support for the Vision ZP3102-5 (500 series) and the Monoprice clone (#15271)
+  VISION_VP3102_5 = {
+    MATCHING_MATRIX = {
+      mfrs          = { 0x0109,  },   -- 109 = Vision
+      product_types = 0x2002,
+      product_ids   = 0x0205
+    },
+    PARAMETERS = {
+      retriggerTime      = {type = 'config', parameter_number = 1, size = 1},
+      temperatureUnits   = {type = 'config', parameter_number = 2, size = 1},
+      motionSensitivity  = {type = 'config', parameter_number = 3, size = 1},
       
       wakeUpInterval       = { type = 'wakeup' }, -- Wake up interval, preference is in seconds
     }

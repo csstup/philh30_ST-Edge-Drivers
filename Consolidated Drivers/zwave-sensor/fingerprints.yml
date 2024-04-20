@@ -90,6 +90,12 @@ zwaveManufacturer:
     productType: 0x2002
     productId: 0x0203
     deviceProfileName: vision-motion-zp3102
+  - id: "0109/2002/0205"
+    deviceLabel: Vision Motion Sensor
+    manufacturerId: 0x0109
+    productType: 0x2002
+    productId: 0x0205
+    deviceProfileName: vision-motion-zp3102-5
   - id: "0109/200A/0A02"
     deviceLabel: Vision Garage Door Detector
     manufacturerId: 0x0109

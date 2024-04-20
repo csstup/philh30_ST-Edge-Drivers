@@ -32,9 +32,16 @@ local battery = require "battery"
 
 local LINEAR_FINGERPRINTS = {
   { manufacturerId = 0x014F, productType = 0x2002, productId = 0x0203 }, -- Linear WAPIRZ motion detector (also Monoprice rebrand)
-  { manufacturerId = 0x0109, productType = 0x2002, productId = 0x0203 }, -- Vision VP3102 motion sensor (also Monoprice rebrand)
-
+  { manufacturerId = 0x0109, productType = 0x2002, productId = 0x0203 }, -- Vision ZP3102 motion sensor (also Monoprice rebrand)
+  { manufacturerId = 0x0109, productType = 0x2002, productId = 0x0205 }, -- Vision ZP3102-5 motion sensor (also Monoprice rebrand)
 }
+
+local function can_use_standard_motion(driver, device)
+  if device:id_match(0x0109, 0x2002, 0x0205) then  -- Vision ZP3102-5
+    return true
+  end
+  return false
+end
 
 ---
 --- @param driver st.zwave.Driver
@@ -49,6 +56,31 @@ local function can_handle_linear_sensor(opts, driver, device, ...)
   return false
 end
 
+--- Default handler for notification command class reports
+---
+--- This converts motion home security reports into motion sensor active/inactive events
+---
+--- @param self st.zwave.Driver
+--- @param device st.zwave.Device
+--- @param cmd st.zwave.CommandClass.Notification.Report
+local function notification_handler_motion_sensor(self, device, cmd)
+  local motion_notification_events_map = {
+    [Notification.event.home_security.INTRUSION_LOCATION_PROVIDED] = capabilities.motionSensor.motion.active(),
+    [Notification.event.home_security.INTRUSION] = capabilities.motionSensor.motion.active(),
+    [Notification.event.home_security.MOTION_DETECTION_LOCATION_PROVIDED] = capabilities.motionSensor.motion.active(),
+    [Notification.event.home_security.MOTION_DETECTION] = capabilities.motionSensor.motion.active(),
+    [Notification.event.home_security.STATE_IDLE] = capabilities.motionSensor.motion.inactive(),
+  }
+
+  if (cmd.args.notification_type == Notification.notification_type.HOME_SECURITY) then
+    local event
+    event = motion_notification_events_map[cmd.args.event]
+    if (event ~= nil) then
+      device:emit_event(event)
+    end
+  end
+end
+
 --- Handler for notification report command class
 ---
 --- @param self st.zwave.Driver
@@ -57,12 +89,25 @@ end
 local function notification_report_handler(self, device, cmd)
   local event
 
-  -- These sensors use INTRUSION as the event for motion, not MOTION_DETECTION as some other sensors might.
-  if cmd.args.notification_type == Notification.notification_type.HOME_SECURITY then
-    if cmd.args.event == Notification.event.home_security.INTRUSION then
-      event = cmd.args.alarm_level == 0 and capabilities.motionSensor.motion.inactive() or capabilities.motionSensor.motion.active()
+  -- The ZP3102 and clones use INTRUSION as the event for motion, not MOTION_DETECTION as some other sensors might.
+  -- They also send event == INTRUSION and the value of cmd.args.alarm_level as 00 or FF as idle/motion.
+  
+  -- The ZP3102-5 is better behaved and sends IDLE and MOTION_DETECTION and IDLE as the events to differentiate.
+  if can_use_standard_motion(self, device) then
+    notification_handler_motion_sensor(self, device, cmd)
+  else
+    -- Needs non standard motion event handling.
+    if cmd.args.notification_type == Notification.notification_type.HOME_SECURITY then
+      if cmd.args.event == Notification.event.home_security.INTRUSION then
+        -- Motion/idle based on the alarm level
+        event = cmd.args.alarm_level == 0 and capabilities.motionSensor.motion.inactive() or capabilities.motionSensor.motion.active()
+      end
     end
-    if cmd.args.event == Notification.event.home_security.TAMPERING_PRODUCT_COVER_REMOVED then
+  end
+
+  -- Handle tamper
+  if cmd.args.notification_type == Notification.notification_type.HOME_SECURITY then
+    if cmd.args.event == Notification.event.home_security.TAMPERING_PRODUCT_COVER_REMOVED then  -- TAMPERING_PRODUCT_COVER_REMOVED = 0x03,
       event = capabilities.tamperAlert.tamper.detected()
       -- The tamper will be cleared when the device wakes up upon the tamper switch
       -- being closed again.
@@ -71,6 +116,7 @@ local function notification_report_handler(self, device, cmd)
       --end)
     end
   end
+  
   if (event ~= nil) then
     device:emit_event(event)
   end
