@@ -1,6 +1,6 @@
 name: 'Z-Wave Sensor CS'
 packageKey: 'zwave-sensor-cs'
 description: "Supports a variety of HomeSeer, Ecolink, FortrezZ, Monoprice, and Zooz Zwave sensors."
-vendorSupportInformation: '<a href="https://community.smartthings.com/t/st-edge-z-wave-sensor-driver-channel-including-specific-ecolink-fortrezz-homeseer-and-zooz-models/248133">SmartThings Community discussion</a><br><br><a href="https://github.com/philh30/ST-Edge-Drivers">GitHub repo</a><br><br>Supports:<br>- Ecolink contact, tilt and flood sensors<br>- FortrezZ leak sensor<br>- HomeSeer HS-LS100+ leak sensor<br>- Monoprice 4-in-1 sensor<br>- Monoprice HKZW-DWS01<br>- Zooz ZSE11, ZSE40 and ZSE41<br>- Linear WAPIRZ motion sensor<br>- Vision VP3102 motion sensor<br>- Vision ZP2102 contact sensor<br>- Vision ZG8101 garage sensor<br><br>Originally Zwave Sensor PH, courtesy of philh30'
+vendorSupportInformation: '<a href="https://community.smartthings.com/t/st-edge-z-wave-sensor-driver-channel-including-specific-ecolink-fortrezz-homeseer-and-zooz-models/248133">SmartThings Community discussion</a><br><br><a href="https://github.com/philh30/ST-Edge-Drivers">GitHub repo</a><br><br>Supports:<br>- Ecolink contact, tilt and flood sensors<br>- FortrezZ leak sensor<br>- HomeSeer HS-LS100+ leak sensor<br>- Monoprice 4-in-1 sensor<br>- Monoprice HKZW-DWS01<br>- Zooz ZSE11, ZSE40 and ZSE41<br>- Linear WAPIRZ motion sensor<br>- Vision ZP3102 motion sensor<br>- Vision ZD2102 contact sensor<br>- Vision ZG8101 garage sensor<br><br>Originally Zwave Sensor PH, courtesy of philh30'
 permissions:
   zwave: {}
