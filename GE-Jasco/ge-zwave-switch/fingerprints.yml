@@ -425,6 +425,12 @@ zwaveManufacturer:
     productType: 0x5250
     productId: 0x3030
     deviceProfileName: ge-plugin-legacy
+  - id: "0063/5250/3031"
+    deviceLabel: GE Plug In Switch
+    manufacturerId: 0x0063
+    productType: 0x5250
+    productId: 0x3031
+    deviceProfileName: ge-plugin-legacy
   - id: "0063/5250/3130"
     deviceLabel: GE Plug In Switch 12720
     manufacturerId: 0x0063

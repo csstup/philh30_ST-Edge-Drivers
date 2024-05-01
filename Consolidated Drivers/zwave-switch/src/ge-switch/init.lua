@@ -107,6 +107,7 @@ local GE_SWITCH_FINGERPRINTS = {
   {mfr = 0x0063, prod = 0x5052, model = 0x3039},  -- GE Plug In Switch 29172
   {mfr = 0x0063, prod = 0x5052, model = 0x3130},
   {mfr = 0x0063, prod = 0x5250, model = 0x3030},  -- GE Plug In Switch 12719
+  {mfr = 0x0063, prod = 0x5250, model = 0x3031},  -- GE Plug In Switch
   {mfr = 0x0063, prod = 0x5250, model = 0x3130},  -- GE Plug In Switch 12720
   {mfr = 0x0063, prod = 0x5052, model = 0x3132},  -- 28177 GE Plug In Dual
   {mfr = 0x0063, prod = 0x5252, model = 0x3530},
