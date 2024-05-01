@@ -310,7 +310,13 @@ zwaveManufacturer:
     manufacturerId: 0x0063
     productType: 0x4952
     productId: 0x3239
-    deviceProfileName: ge-switch-scene
+    deviceProfileName: ge-switch-scene-led
+  - id: "0063/4952/3330"
+    deviceLabel: GE Smart Toggle Switch 58436
+    manufacturerId: 0x0063
+    productType: 0x4952
+    productId: 0x3330
+    deviceProfileName: ge-switch-scene-led    
   - id: "0063/4952/3333"
     deviceLabel: UltraPro Switch 59347
     manufacturerId: 0x0063

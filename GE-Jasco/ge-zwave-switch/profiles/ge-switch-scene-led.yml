@@ -1,0 +1,131 @@
+name: ge-switch-scene-led
+components:
+- id: main
+  capabilities:
+  - id: switch
+    version: 1
+  - id: button
+    version: 1
+  - id: refresh
+    version: 1
+  categories:
+  - name: Switch
+metadata:
+  deviceType: Switch
+  ocfDeviceType: oic.d.switch
+  deviceTypeId: Switch
+preferences:
+  - title: "LED Indicator"
+    name: ledIndicator     # P3
+    description: "Turn LED indicator on"
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Turn on when switch is off"
+        1: "Turn on when switch is on"
+        2: "Always off"
+        3: "Always on"
+      default: 0
+  - title: "Invert Switch"
+    name: invertSwitch   # P4
+    description: "Invert switch"
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "No"
+        1: "Yes"
+      default: 0
+  - title: "Select 3-Way Type"
+    name: threeWayType   # P5
+    description: "Standard 3-way or add-on switch being used"
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Add-On Switch"
+        1: "Standard 3-Way Switch"
+      default: 0      
+  - title: "Exclusion Sequence"
+    name: excludeProtect   # P19
+    description: "Never accidentally remove a device with alternate exclusion"
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Press any button"
+        1: "Press ON twice and OFF twice"
+      default: 0
+  - title: "LED Light Color"
+    name: ledLightColor     # P34
+    description: "Set the LED light color"
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        1: "Red"
+        2: "Orange"
+        3: "Yellow"
+        4: "Green"
+        5: "Blue"
+        6: "Pink"
+        7: "Purple"
+        8: "White"
+      default: 5
+  - title: "LED Light Intensity"
+    name: ledLightIntens    # P35
+    description: "Set the LED light intensity"
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        1: "1 - Lowest"
+        2: "2"
+        3: "3"
+        4: "4 - Medium"
+        5: "5"
+        6: "6"
+        7: "7 - Highest"
+      default: 4 
+  - title: "Guidelight Mode Intensity"
+    name: guideLightInten    # P36
+    description: "Set the guidelight mode intensity"
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        1: "1 - Lowest"
+        2: "2"
+        3: "3"
+        4: "4 - Medium"
+        5: "5"
+        6: "6"
+        7: "7 - Highest"
+      default: 4
+  - title: "Relay Control"
+    name: relayControl   # P39
+    description: "Relay control / smart bulb mode"
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Relay is controlled by switch"
+        1: "Power is always on"
+      default: 0         
+  - title: "Association Group 2"
+    name: assocGroup2
+    description: "Enter a comma delimited list of hex IDs to be turned on/off with the switch load (5 node max)"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      default: ""
+  - title: "Association Group 3"
+    name: assocGroup3
+    description: "Enter a comma delimited list of hex IDs to be turned on/off with switch double tap (5 node max)"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      default: ""
