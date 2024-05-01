@@ -33,7 +33,7 @@ local battery = require "battery"
 local LINEAR_FINGERPRINTS = {
   { manufacturerId = 0x014F, productType = 0x2002, productId = 0x0203 }, -- Linear WAPIRZ motion detector (also Monoprice rebrand)
   { manufacturerId = 0x0109, productType = 0x2002, productId = 0x0203 }, -- Vision ZP3102 motion sensor (also Monoprice rebrand)
-  { manufacturerId = 0x0109, productType = 0x2002, productId = 0x0205 }, -- Vision ZP3102-5 motion sensor (also Monoprice rebrand)
+  { manufacturerId = 0x0109, productType = 0x2002, productId = 0x0205 }, -- Vision ZP3102-5 motion sensor (also Monoprice #15271)
 }
 
 local function can_use_standard_motion(driver, device)
@@ -116,7 +116,7 @@ local function notification_report_handler(self, device, cmd)
       --end)
     end
   end
-  
+
   if (event ~= nil) then
     device:emit_event(event)
   end
