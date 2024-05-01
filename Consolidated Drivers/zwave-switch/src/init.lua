@@ -129,6 +129,7 @@ local driver_template = {
     capabilities.colorControl,
     capabilities.colorTemperature,
     capabilities.colorMode,
+    capabilities.firmwareUpdate,
   },
   sub_drivers = {
     require("ge-switch"),
