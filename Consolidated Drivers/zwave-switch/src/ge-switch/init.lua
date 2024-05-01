@@ -87,6 +87,7 @@ local GE_SWITCH_FINGERPRINTS = {
   {mfr = 0x0063, prod = 0x4952, model = 0x3235},
   {mfr = 0x0063, prod = 0x4952, model = 0x3237},
   {mfr = 0x0063, prod = 0x4952, model = 0x3238},
+  {mfr = 0x0063, prod = 0x4952, model = 0x3239},  -- Enbrighten Switch 58433
   {mfr = 0x0063, prod = 0x4952, model = 0x3333},  -- UltraPro 59347
   {mfr = 0x0063, prod = 0x4F44, model = 0x3031},  -- GE Direct-Wire Outdoor Switch 12726
   {mfr = 0x0063, prod = 0x4F44, model = 0x3032},

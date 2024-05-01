@@ -299,6 +299,12 @@ zwaveManufacturer:
     productType: 0x4952
     productId: 0x3238
     deviceProfileName: ge-switch-scene
+  - id: "0063/4952/3239"
+    deviceLabel: Enbrighten Switch 58433
+    manufacturerId: 0x0063
+    productType: 0x4952
+    productId: 0x3239
+    deviceProfileName: ge-switch-scene
   - id: "0063/4952/3333"
     deviceLabel: UltraPro Switch 59347
     manufacturerId: 0x0063
