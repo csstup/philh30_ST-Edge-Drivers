@@ -180,7 +180,7 @@ local devices = {
     MATCHING_MATRIX = {
       mfrs = {0x0039, 0x0063},
       product_types = {0x4944},
-      product_ids = {0x3132, 0x3235, 0x3237, 0x3333, 0x3334, 0x3339, 0x3431},
+      product_ids = {0x3132, 0x3235, 0x3237, 0x3333, 0x3334, 0x3339, 0x3430, 0x3431},
     },
     PARAMETERS = GE_SCENE.PARAMETERS,
     BUTTONS = GE_SCENE.BUTTONS,

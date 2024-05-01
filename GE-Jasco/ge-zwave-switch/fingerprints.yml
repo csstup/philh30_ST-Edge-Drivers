@@ -137,6 +137,12 @@ zwaveManufacturer:
     productType: 0x4944
     productId: 0x3339
     deviceProfileName: ge-dimmer-scene
+  - id: "0063/4944/3430"
+    deviceLabel: Enbrighten Dimmer 58438
+    manufacturerId: 0x0063
+    productType: 0x4944
+    productId: 0x3430
+    deviceProfileName: ge-dimmer-scene
   - id: "0063/4944/3431"
     deviceLabel: Enbrighten Dimmer 59335
     manufacturerId: 0x0063
