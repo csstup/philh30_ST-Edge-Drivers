@@ -47,6 +47,27 @@ local function updateNetworkId(self, device, deviceId)
   end
 end
 
+
+--- Update the built in capability firmwareUpdate's currentVersion attribute with the
+--- Zwave version information received during pairing of the device.
+--- @param self st.zwave.Driver
+--- @param device st.zwave.Device
+local function updateFirmwareVersion(self, device)
+  -- Set our zwave updateFirmwareVersion 
+  for _, component in pairs(device.profile.components) do
+    if device:supports_capability_by_id(capabilities.firmwareUpdate.ID,component.id) then
+      local fw_major = (((device.st_store or {}).zwave_version or {}).firmware or {}).major
+      local fw_minor = (((device.st_store or {}).zwave_version or {}).firmware or {}).minor
+      if fw_major and fw_minor then
+        local fmtFirmwareVersion= fw_major .. "." .. string.format('%02d',fw_minor)
+        device:emit_component_event(component,capabilities.firmwareUpdate.currentVersion({value = fmtFirmwareVersion }))
+      else
+        device.log.warn("Firmware major or minor version not available.")
+      end
+    end
+  end
+end
+
 --- Handle preference changes
 --- @param self st.zwave.Driver
 --- @param device st.zwave.Device
@@ -110,6 +131,7 @@ local function added_handler(self, device)
   end
   configurations.initial_buttons(self,device)
   updateNetworkId(self, device, device.device_network_id)
+  updateFirmwareVersion(self, device)
 end
 
 --- @param self st.zwave.Driver
@@ -125,6 +147,8 @@ local function driver_switched(self, device, event, args)
   else
     device.log.info("Device is sleepy.  Will configure on next wakeup.")
   end
+
+  updateFirmwareVersion(self, device)
 end
 
 local driver_template = {
@@ -153,6 +177,8 @@ local driver_template = {
     capabilities.smokeDetector,
     capabilities.button,
     capabilities.refresh,
+    capabilities.firmwareUpdate,
+    capabilities["platemusic11009.deviceNetworkId"],
   },
   sub_drivers = {
     require("sleepy-device"),  -- General support for any sleepy zwave devices

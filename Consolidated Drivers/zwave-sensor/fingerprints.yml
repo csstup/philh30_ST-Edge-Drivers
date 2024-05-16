@@ -77,6 +77,12 @@ zwaveManufacturer:
     productType: 0x0201
     productId: 0x0301
     deviceProfileName: ring-contact-2
+  - id: 0346/0C01/0301
+    deviceLabel: Ring Outdoor Contact Sensor 2
+    manufacturerId: 0x0346
+    productType: 0x0C01
+    productId: 0x0301
+    deviceProfileName: ring-contact-2
 # Vision
   - id: "0109/2001/0102"
     deviceLabel: Vision Door/Window Sensor

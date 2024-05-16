@@ -62,7 +62,7 @@ local devices = {
   RING_CONTACT_2 = {
     MATCHING_MATRIX = {
       mfrs = 0x0346,
-      product_types = 0x0201,
+      product_types = {0x0201,0x0C01},
       product_ids = 0x0301,
     },
     BUTTONS = {

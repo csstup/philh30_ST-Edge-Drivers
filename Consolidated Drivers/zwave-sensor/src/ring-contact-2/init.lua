@@ -27,6 +27,7 @@ local battery = require "battery"
 
 local RING_FINGERPRINTS = {
   { manufacturerId = 0x0346, productType = 0x0201, productId = 0x0301 }, -- Ring contact sensor v2
+  { manufacturerId = 0x0346, productType = 0x0C01, productId = 0x0301 }, -- Ring outdoor contact sensor v2
 }
 
 --- Determine whether the passed device is RING_FINGERPRINTS
