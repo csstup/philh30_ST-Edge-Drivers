@@ -66,6 +66,7 @@ local GE_SWITCH_FINGERPRINTS = {
   {mfr = 0x0063, prod = 0x4944, model = 0x3339},
   {mfr = 0x0063, prod = 0x4944, model = 0x3430},  -- Enbrighten Dimmer 58438
   {mfr = 0x0063, prod = 0x4944, model = 0x3431},  -- Enbrighten Dimmer 59335
+  {mfr = 0x0063, prod = 0x4944, model = 0x3433},  -- Enbrighten Dimmer 59350/ZWA3016
   {mfr = 0x0063, prod = 0x4952, model = 0x3031},
   {mfr = 0x0063, prod = 0x4952, model = 0x3032},
   {mfr = 0x0063, prod = 0x4952, model = 0x3033},

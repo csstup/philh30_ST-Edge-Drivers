@@ -150,6 +150,12 @@ zwaveManufacturer:
     productType: 0x4944
     productId: 0x3431
     deviceProfileName: ge-dimmer-scene
+  - id: "0063/4944/3433"
+    deviceLabel: GE Dimmer 59350
+    manufacturerId: 0x0063
+    productType: 0x4944
+    productId: 0x3433
+    deviceProfileName: ge-dimmer-scene
   - id: "0063/494D/3031"
     deviceLabel: GE Motion Switch 24770
     manufacturerId: 0x0063
