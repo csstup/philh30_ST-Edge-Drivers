@@ -329,7 +329,7 @@ zwaveManufacturer:
     manufacturerId: 0x0063
     productType: 0x4952
     productId: 0x3333
-    deviceProfileName: ge-switch-scene
+    deviceProfileName: ge-switch-scene-led
   - id: "0063/4F44/3031"
     deviceLabel: GE Direct-Wire Outdoor Switch 12726
     manufacturerId: 0x0063
