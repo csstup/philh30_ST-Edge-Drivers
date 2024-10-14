@@ -323,12 +323,24 @@ zwaveManufacturer:
     manufacturerId: 0x0063
     productType: 0x4952
     productId: 0x3330
+    deviceProfileName: ge-switch-scene-led
+  - id: "0063/4952/3331"
+    deviceLabel: GE Smart Toggle Switch 59337
+    manufacturerId: 0x0063
+    productType: 0x4952
+    productId: 0x3331
     deviceProfileName: ge-switch-scene-led 
   - id: "0063/4952/3333"
     deviceLabel: UltraPro Switch 59347
     manufacturerId: 0x0063
     productType: 0x4952
     productId: 0x3333
+    deviceProfileName: ge-switch-scene-led
+  - id: "0063/4952/3334"
+    deviceLabel: UltraPro Switch 59368
+    manufacturerId: 0x0063
+    productType: 0x4952
+    productId: 0x3334
     deviceProfileName: ge-switch-scene-led
   - id: "0063/4F44/3031"
     deviceLabel: GE Direct-Wire Outdoor Switch 12726
