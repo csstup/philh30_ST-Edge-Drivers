@@ -144,7 +144,7 @@ local function set_color(driver, device, command)
       command.component
     )
   end
-  device.thread:call_with_delay(constants.DEFAULT_GET_STATUS_DELAY + duration, query_color)
+  device.thread:call_with_delay(constants.DEFAULT_GET_STATUS_DELAY, query_color)
 end
 
 local inovelli_lzw45 = {

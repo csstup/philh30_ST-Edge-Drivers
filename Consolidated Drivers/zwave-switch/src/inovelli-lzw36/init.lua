@@ -97,7 +97,7 @@ local function set_color(driver, device, cmd)
     local query_configuration = function()
         device:send(Configuration:Get({ parameter_number=param }))
     end
-    device.thread:call_with_delay(constants.DEFAULT_GET_STATUS_DELAY + constants.DEFAULT_DIMMING_DURATION, query_configuration)
+    device.thread:call_with_delay(constants.DEFAULT_GET_STATUS_DELAY, query_configuration)
 end
 
 local function do_refresh(self, device)
