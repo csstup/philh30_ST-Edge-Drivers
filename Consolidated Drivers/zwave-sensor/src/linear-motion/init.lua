@@ -17,8 +17,6 @@ local capabilities = require "st.capabilities"
 local cc = require "st.zwave.CommandClass"
 --- @type st.zwave.CommandClass.Basic
 local Basic = (require "st.zwave.CommandClass.Basic")({ version=1 })
---- @type st.zwave.CommandClass.Battery
-local Battery = (require "st.zwave.CommandClass.Battery")({ version = 1 })
 --- @type st.zwave.CommandClass.Notification
 local Notification = (require "st.zwave.CommandClass.Notification")({ version = 3 })
 --- @type st.zwave.CommandClass.SensorBinary
@@ -28,7 +26,6 @@ local WakeUp = (require "st.zwave.CommandClass.WakeUp")({ version = 1 })
 --- @type st.utils
 local utils = require "st.utils"
 local call_parent_handler = require "call_parent"
-local battery = require "battery"
 
 local LINEAR_FINGERPRINTS = {
   { manufacturerId = 0x014F, productType = 0x2002, productId = 0x0203 }, -- Linear WAPIRZ motion detector (also Monoprice rebrand)
@@ -135,10 +132,7 @@ local function wakeup_notification(self, device, cmd)
   device:emit_event(capabilities.tamperAlert.tamper.clear())
 
   -- We may need to request a battery update while we're woken up
-  if battery.getBatteryUpdate(self, device) then
-    -- Request a battery update now
-    device:send(Battery:Get({}))
-  end
+  -- battery refresh update is handled by sleepy-device subdriver.
 end
 
 --- These are non-standard uses of the basic set command, but this device uses it instead of 

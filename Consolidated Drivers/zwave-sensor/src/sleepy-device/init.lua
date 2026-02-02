@@ -17,12 +17,29 @@
 -- 
 
 local WakeUp = (require "st.zwave.CommandClass.WakeUp")({ version = 1 })
+local Battery = (require "st.zwave.CommandClass.Battery")({ version = 1 })
 local cc = require "st.zwave.CommandClass"
 local call_parent_handler = require "call_parent"
+local battery = require "battery"
 
 
 local function can_handle_sleepy_device(opts, driver, device, ...)
     return device:is_cc_supported(cc.WAKE_UP)
+end
+
+--- @param self st.zwave.Driver
+--- @param device st.zwave.Device
+--- @param force  boolean|nil      Force battery update regardless of timing
+local function maybe_getBatteryUpdate(self, device, force)
+  local prefs = device.preferences
+  if not prefs
+     or prefs.batteryInterval == nil
+     or prefs.wakeUpInterval == nil then
+    device.log.trace("Skipping getBatteryUpdate: batteryInterval/wakeUpInterval not supported in profile")
+    return false
+  end
+
+  return battery.getBatteryUpdate(self, device, force) == true
 end
 
 --- @param self st.zwave.Driver
@@ -35,6 +52,12 @@ local function wakeup_notification(self, device, cmd)
   if device:get_field("device_configured") ~= true then
     device.log.debug("Configuration of device pending, calling doConfigure")
     call_parent_handler(self.lifecycle_handlers.doConfigure, self, device, "doConfigure")
+  end
+
+  -- If we support the battery wakeup/update prefs, then we may request a battery update.
+  if maybe_getBatteryUpdate(self, device) then
+    -- Request a battery update now
+    device:send(Battery:Get({}))
   end
 
   device.log.trace("wakeup_notification(sleepy-device) - calling default handlers")

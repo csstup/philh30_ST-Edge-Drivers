@@ -215,6 +215,26 @@ local devices = {
       wakeUpInterval       = { type = 'wakeup' }, -- Wake up interval, preference is in seconds
     }
   },
+  NEO_NAS_WS02Z = {   --- Neo Leak Senspr
+    MATCHING_MATRIX = {
+      mfrs          = 0x0258,
+      product_types = 0x0100,
+      product_ids   = 0x1025
+    },
+    PARAMETERS = {
+      alarmDurationTime    = { type = 'config', parameter_number = 1, size = 1 },  -- P1: Leak reporting duration
+      alarmInterval        = { type = 'config', parameter_number = 2, size = 1 },  -- P2
+      firstAlarmOnDuration = { type = 'config', parameter_number = 3, size = 1 },  -- P3
+      alarmOnDuration      = { type = 'config', parameter_number = 4, size = 1 },  -- P4
+      beepEnable           = { type = 'config', parameter_number = 5, size = 1 },  -- P5
+
+      wakeUpInterval       = { type = 'wakeup' }, -- Wake up interval, preference is in seconds
+
+      assocGroup2          = { type = 'assoc', group = 2, maxnodes = 5, addhub = false },
+      assocGroup3          = { type = 'assoc', group = 3, maxnodes = 5, addhub = false },
+      assocGroup4          = { type = 'assoc', group = 4, maxnodes = 5, addhub = false },
+    }
+  },
 }
 
 preferences.update_preferences = function(driver, device, args)

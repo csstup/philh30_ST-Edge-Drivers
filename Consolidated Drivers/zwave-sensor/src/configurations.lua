@@ -71,7 +71,17 @@ local devices = {
         supported_button_values = {"pushed"}
       },
     }
-  }
+  },
+  NEO_NAS_WS02Z = {   --- Neo Leak Senspr
+    MATCHING_MATRIX = {
+      mfrs          = 0x0258,
+      product_types = 0x0100,
+      product_ids   = 0x1025
+    },
+    CONFIGURATION = {
+      { parameter_number = 6, size = 1, configuration_value = 1 },  -- P6: Always enable leak notification (1 = enabled). Not sure why you wouldn't.
+    }
+  },
 }
 local configurations = {}
 
@@ -79,6 +89,7 @@ configurations.initial_configuration = function(driver, device)
   local configuration = configurations.get_device_configuration(device)
   if configuration ~= nil then
     for _, value in ipairs(configuration) do
+      --- device:send(Configuration:Set({parameter_number, size, configuration_value))
       device:send(Configuration:Set(value))
     end
   end

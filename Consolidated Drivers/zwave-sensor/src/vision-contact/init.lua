@@ -96,10 +96,10 @@ local function wakeup_notification(self, device, cmd)
   device:emit_event(capabilities.tamperAlert.tamper.clear())
 
   -- We may need to request a battery update while we're woken up
-  if battery.getBatteryUpdate(self, device) then
+  --if battery.getBatteryUpdate(self, device) then
     -- Request a battery update now
-    device:send(Battery:Get({}))
-  end
+    -- device:send(Battery:Get({}))
+  --end
 end
 
 --- These are non-standard uses of the basic set command, but this device uses it instead of 

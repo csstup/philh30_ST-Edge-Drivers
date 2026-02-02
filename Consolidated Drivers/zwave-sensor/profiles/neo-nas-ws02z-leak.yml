@@ -1,0 +1,115 @@
+name: neo-nas-ws02z-leak
+components:
+- id: main
+  capabilities:
+  - id: waterSensor
+    version: 1
+  - id: platemusic11009.deviceNetworkId
+    version: 1
+  - id: firmwareUpdate
+    version: 1
+  - id: battery
+    version: 1
+  categories:
+    - name: LeakSensor
+preferences:
+  - name: "wakeUpInterval"
+    title: "Wake Up Interval"
+    description: "Default = <b>Every 4 hours</b>.<br>During wakeup the sensor can send battery updates and receive parameter changes."
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        3600:   "Every hour"
+        7200:   "Every 2 hours"
+        10800:  "Every 3 hours"
+        14400:  "Every 4 hours"    # default
+        21600:  "Every 6 hours"
+        28800:  "Every 8 hours"
+        43200:  "Every 12 hours"
+        86400:  "Every 24 hours"
+      default: 14400
+  - name: "batteryInterval"
+    title: "Battery Update Interval"
+    description: "Battery updates are requested during the wake up interval.<br>Default = <b>every wakeup</b>.<br>If disabled, the device will still send an alert when battery reaches critical."
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        0:      "Disabled"
+        1:      "Every wakeup"   # default
+        2:      "Every other wakeup"
+        3:      "Every 3rd wakeup"
+        4:      "Every 4th wakeup"
+        101:    "Once per day maximum"
+      default: 1
+  - name: "alarmDurationTime"  # P1
+    title: "Alarm Duration Time"
+    description: "Adjusts the total amount of time (in minutes) for beep when water leakage is detected.   0 = until leak is no longer detected.  Default = 120 minutes."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 255
+      default: 120
+  - name: "alarmInterval" # P2
+    title: "Alarm Interval"
+    description: "Adjusts the interval time (in minutes) of beep when water leakage is detected.  Default = 1 min"
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 1
+      maximum: 255
+      default: 1
+  - name: "firstAlarmOnDuration" # P3
+    title: "First Alarm On Duration"
+    description: "Sets beep duration (in seconds) the first time when water leakage is detected.  Default = 60 seconds."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 1
+      maximum: 255
+      default: 60 
+  - name: "alarmOnDuration" # P4
+    title: "Alarm On Duration"
+    description: "Sets beep duration (in seconds) for each additional time when water leakage is detected.  Default = 5 seconds."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 1
+      maximum: 255
+      default: 5   
+  - name: "beepEnable" # P5
+    title: "Beep When Triggered"
+    description: "Beep When Alarm Triggers. Default = enabled."
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Disabled"
+        1: "Enabled"
+      default: 1
+  - title: "Association Group 2 (Basic Set)"
+    name: assocGroup2
+    description: "Enter a comma delimited list of hex IDs. Flood Sensor will send Basic Set to associated nodes when Water leak detected. 5 node max."
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      default: ""
+  - title: "Association Group 3"
+    name: assocGroup3
+    description: "Enter a comma delimited list of hex IDs. Flood Sensor will send Notification to associated nodes when Water leak detected. 5 node max."
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      default: ""
+  - title: "Association Group 4"
+    name: assocGroup4
+    description: "Enter a comma delimited list of hex IDs. Flood Sensor will send Sensor Binary Report to associated nodes when Water leak detected. 5 node max."
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      default: ""           

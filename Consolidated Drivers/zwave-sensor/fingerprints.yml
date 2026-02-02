@@ -139,6 +139,13 @@ zwaveManufacturer:
     productType: 0x0202
     productId: 0x0006
     deviceProfileName: zooz-q-sensor
+# Misc
+  - id: 0258/0100/1025
+    deviceLabel: Neo NAS-WS02Z Leak Sensor
+    manufacturerId: 0x0258
+    productType: 0x0100
+    productId: 0x1025
+    deviceProfileName: neo-nas-ws02z-leak  
 zwaveGeneric:
   - id: "GenericSensorAlarm"
     deviceLabel: Z-Wave Sensor

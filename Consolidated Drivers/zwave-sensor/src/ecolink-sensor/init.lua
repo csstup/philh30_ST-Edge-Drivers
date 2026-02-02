@@ -13,11 +13,9 @@
 -- limitations under the License.
 
 local WakeUp = (require "st.zwave.CommandClass.WakeUp")({ version = 1 })
-local Battery = (require "st.zwave.CommandClass.Battery")({ version = 1 })
 local capabilities = require "st.capabilities"
 local cc = require "st.zwave.CommandClass"
 local call_parent_handler = require "call_parent"
-local battery = require "battery"
 
 local ECOLINK_FINGERPRINTS = {
     { mfr = 0x014A, prod = 0x0001, model = 0x0003 }, -- Ecolink Tilt Sensor 2 (zwave)
@@ -46,10 +44,7 @@ local function wakeup_notification(self, device, cmd)
     device:emit_event(capabilities.tamperAlert.tamper.clear())
 
     -- We may need to request a battery update while we're woken up
-    if battery.getBatteryUpdate(self, device) then
-        -- Request a battery update now
-        device:send(Battery:Get({}))
-    end
+    -- battery refresh update is handled by sleepy-device subdriver.
 end
 
 --- @param self st.zwave.Driver

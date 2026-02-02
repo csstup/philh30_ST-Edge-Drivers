@@ -15,14 +15,12 @@
 local capabilities = require "st.capabilities"
 --- @type st.zwave.CommandClass
 local cc = require "st.zwave.CommandClass"
---- @type st.zwave.CommandClass.Battery
-local Battery = (require "st.zwave.CommandClass.Battery")({ version = 1 })
 --- @type st.zwave.CommandClass.SensorBinary
 local SensorBinary = (require "st.zwave.CommandClass.SensorBinary")({ version = 2 })
 --- @type st.zwave.CommandClass.WakeUp
 local WakeUp = (require "st.zwave.CommandClass.WakeUp")({ version = 1 })
 local call_parent_handler = require "call_parent"
-local battery = require "battery"
+
 
 local ZOOZ_FINGERPRINTS = {
   { manufacturerId = 0x027A, productType = 0x7000, productId = 0xE001 }, -- Zooz ZSE41
@@ -54,10 +52,7 @@ local function wakeup_notification(self, device, cmd)
   end
 
   -- We may need to request a battery update while we're woken up
-  if battery.getBatteryUpdate(self, device) then
-    -- Request a battery update now
-    device:send(Battery:Get({}))
-  end
+  -- battery refresh update is handled by sleepy-device subdriver.
 end
 
 local zooz_sensor = {
