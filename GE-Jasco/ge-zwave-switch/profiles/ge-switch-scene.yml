@@ -16,7 +16,7 @@ metadata:
   deviceTypeId: Switch
 preferences:
   - title: "LED Indicator"
-    name: ledIndicator
+    name: ledIndicator   # P3
     description: "Turn LED indicator on"
     required: true
     preferenceType: enumeration

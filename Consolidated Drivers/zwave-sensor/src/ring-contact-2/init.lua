@@ -25,6 +25,7 @@ local call_parent_handler = require "call_parent"
 
 local RING_FINGERPRINTS = {
   { manufacturerId = 0x0346, productType = 0x0201, productId = 0x0301 }, -- Ring contact sensor v2
+  { manufacturerId = 0x0346, productType = 0x0201, productId = 0x0601 }, -- Ring contact sensor v2 (2023 refresh model)
   { manufacturerId = 0x0346, productType = 0x0C01, productId = 0x0301 }, -- Ring outdoor contact sensor v2
 }
 

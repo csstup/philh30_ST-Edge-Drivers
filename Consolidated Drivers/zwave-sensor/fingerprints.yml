@@ -77,6 +77,12 @@ zwaveManufacturer:
     productType: 0x0201
     productId: 0x0301
     deviceProfileName: ring-contact-2
+  - id: 0346/0201/0601
+    deviceLabel: Ring Contact Sensor 2
+    manufacturerId: 0x0346
+    productType: 0x0201
+    productId: 0x0601
+    deviceProfileName: ring-contact-2    
   - id: 0346/0C01/0301
     deviceLabel: Ring Outdoor Contact Sensor 2
     manufacturerId: 0x0346
