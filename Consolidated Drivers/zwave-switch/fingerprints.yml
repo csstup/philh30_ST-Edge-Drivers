@@ -360,6 +360,12 @@ zwaveManufacturer:
     productType: 0x4952
     productId: 0x3436
     deviceProfileName: ge-switch-scene-led
+  - id: "0063/4952/3438"
+    deviceLabel: Enbrighten Switch 76592
+    manufacturerId: 0x0063
+    productType: 0x4952
+    productId: 0x3438
+    deviceProfileName: ge-switch-scene-led    
   - id: "0063/4952/3439"
     deviceLabel: UltraPro Switch 76603
     manufacturerId: 0x0063
