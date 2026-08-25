@@ -71,6 +71,30 @@ zwaveManufacturer:
     productId: 0x0008
     deviceProfileName: monoprice-hkzw-dws01
 # Ring
+  - id: 0346/0401/0101
+    deviceLabel: Ring Range Extender
+    manufacturerId: 0x0346
+    productType: 0x0401
+    productId: 0x0101
+    deviceProfileName: ring-range-extender-1
+  - id: 0346/0401/0201
+    deviceLabel: Ring Range Extender
+    manufacturerId: 0x0346
+    productType: 0x0401
+    productId: 0x0201
+    deviceProfileName: ring-range-extender-1
+  - id: 0346/0401/0202
+    deviceLabel: Ring Range Extender
+    manufacturerId: 0x0346
+    productType: 0x0401
+    productId: 0x0202
+    deviceProfileName: ring-range-extender-1
+  - id: 0346/0401/0301
+    deviceLabel: Ring Range Extender 2
+    manufacturerId: 0x0346
+    productType: 0x0401
+    productId: 0x0301
+    deviceProfileName: ring-range-extender-2
   - id: 0346/0201/0301
     deviceLabel: Ring Contact Sensor 2
     manufacturerId: 0x0346

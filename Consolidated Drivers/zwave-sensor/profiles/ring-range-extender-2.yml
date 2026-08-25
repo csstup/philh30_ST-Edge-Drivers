@@ -1,0 +1,58 @@
+name: ring-range-extender-2
+components:
+- id: main
+  capabilities:
+  - id: powerSource
+    version: 1
+  - id: battery
+    version: 1
+  - id: batteryLevel
+    version: 1
+  - id: chargingState
+    version: 1
+  - id: refresh
+    version: 1
+  - id: platemusic11009.deviceNetworkId
+    version: 1
+  - id: firmwareUpdate
+    version: 1
+  categories:
+  - name: Networking
+preferences:
+  - name: "heartbeats"  # P1
+    title: "Minutes between Heartbeats"
+    description: "The number of minutes between automatic battery reports after the last event.<br>Default = <b>70 minutes</b>."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 1
+      maximum: 70
+      default: 70
+  - name: "applicationRetries"  # P2
+    title: "Application-Level Retries"
+    description: "Number of application-level retries for messages that are not acknowledged.<br>Default = <b>1 retry</b>."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 5
+      default: 1
+  - name: "retryBaseWait"  # P3
+    title: "Retry Base Wait Time"
+    description: "Base wait time in seconds used when calculating the delay between application-level retry messages.<br>Default = <b>5 seconds</b>."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 1
+      maximum: 60
+      default: 5
+  - name: "ledIndicator"  # P4
+    title: "Status LED Indications"
+    description: "Enables or disables the device's configurable status LED indications.<br>Default = <b>Enabled</b>."
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Disabled"
+        1: "Enabled"
+      default: 1

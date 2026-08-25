@@ -93,6 +93,31 @@ local devices = {
       assocGroup2          = { type = 'assoc', group = 2, maxnodes = 5, addhub = false }
     }
   },
+  RING_RANGE_EXTENDER_1 = {
+    MATCHING_MATRIX = {
+      mfrs          = 0x0346,
+      product_types = 0x0401,
+      product_ids   = {0x0101,0x0201,0x0202}
+    },
+    PARAMETERS = {
+      heartbeats               = { type = 'config', parameter_number = 1, size = 1 },
+      applicationRetries       = { type = 'config', parameter_number = 3, size = 1 },
+      retryBaseWait            = { type = 'config', parameter_number = 4, size = 1 },
+    }
+  },
+  RING_RANGE_EXTENDER_2 = {
+    MATCHING_MATRIX = {
+      mfrs          = 0x0346,
+      product_types = 0x0401,
+      product_ids   = 0x0301
+    },
+    PARAMETERS = {
+      heartbeats           = { type = 'config', parameter_number = 1, size = 1 },
+      applicationRetries   = { type = 'config', parameter_number = 2, size = 1 },
+      retryBaseWait        = { type = 'config', parameter_number = 3, size = 1 },
+      ledIndicator         = { type = 'config', parameter_number = 4, size = 1 },
+    }
+  },
   RING_CONTACT_2 = {
     MATCHING_MATRIX = {
       mfrs          = 0x0346,
