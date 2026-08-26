@@ -1,0 +1,81 @@
+name: jascopro-water-leak
+components:
+- id: main
+  capabilities:
+  - id: waterSensor
+    version: 1
+  - id: tamperAlert
+    version: 1
+  - id: battery
+    version: 1
+  - id: platemusic11009.deviceNetworkId
+    version: 1
+  - id: firmwareUpdate
+    version: 1
+  categories:
+  - name: LeakSensor
+preferences:
+  - name: "ledLightMode"  # P3
+    title: "LED Light Mode"
+    description: "Set the sensor LED light mode.<br>Default = <b>1</b>."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 2
+      default: 1
+  - name: "ledBrightness"  # P41
+    title: "LED Brightness"
+    description: "Set the sensor LED brightness level.<br>Default = <b>0</b>."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 2
+      default: 0
+  - name: "alarmSound"  # P85
+    title: "Alarm Sound"
+    description: "Set the audible leak alarm mode.<br>Default = <b>1</b>."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 2
+      default: 1
+  - name: "lowBatteryReport"  # P86
+    title: "Low Battery Report Threshold"
+    description: "Battery percentage threshold used for the device's low-battery report.<br>Default = <b>10%</b>."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 5
+      maximum: 20
+      default: 10
+  - name: "lowBatteryChirp"  # P87
+    title: "Low Battery Chirp"
+    description: "Enable or disable the audible low-battery chirp.<br>Default = <b>Enabled</b>."
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Disabled"
+        1: "Enabled"
+      default: 1
+  - name: "lowBatteryChirpInterval"  # P88
+    title: "Low Battery Chirp Interval"
+    description: "Number of minutes between low-battery chirps.<br>Default = <b>1 minute</b>."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 1
+      maximum: 10
+      default: 1
+  - name: "statusReporting"  # P89
+    title: "Status Reporting"
+    description: "Raw status-reporting mode defined by the device (0-25).<br>Default = <b>0</b>."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 25
+      default: 0

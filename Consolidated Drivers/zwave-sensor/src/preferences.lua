@@ -118,6 +118,22 @@ local devices = {
       ledIndicator         = { type = 'config', parameter_number = 4, size = 1 },
     }
   },
+  JASCOPRO_WATER_LEAK = {
+    MATCHING_MATRIX = {
+      mfrs          = 0x0063,
+      product_types = 0x4953,
+      product_ids   = 0x3433
+    },
+    PARAMETERS = {
+      ledLightMode             = { type = 'config', parameter_number = 3,  size = 1 }, -- P3
+      ledBrightness            = { type = 'config', parameter_number = 41, size = 1 }, -- P41
+      alarmSound               = { type = 'config', parameter_number = 85, size = 1 }, -- P85
+      lowBatteryReport         = { type = 'config', parameter_number = 86, size = 1 }, -- P86
+      lowBatteryChirp          = { type = 'config', parameter_number = 87, size = 1 }, -- P87
+      lowBatteryChirpInterval  = { type = 'config', parameter_number = 88, size = 1 }, -- P88
+      statusReporting          = { type = 'config', parameter_number = 89, size = 1 }, -- P89
+    }
+  },
   RING_CONTACT_2 = {
     MATCHING_MATRIX = {
       mfrs          = 0x0346,

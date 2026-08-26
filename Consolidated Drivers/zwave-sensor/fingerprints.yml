@@ -70,6 +70,13 @@ zwaveManufacturer:
     productType: 0x0201
     productId: 0x0008
     deviceProfileName: monoprice-hkzw-dws01
+# JascoPro
+  - id: 0063/4953/3433   # 81018 / ZWN6310 Water Leak Sensor
+    deviceLabel: JascoPro Water Leak Sensor
+    manufacturerId: 0x0063
+    productType: 0x4953
+    productId: 0x3433
+    deviceProfileName: jascopro-water-leak
 # Ring
   - id: 0346/0401/0101
     deviceLabel: Ring Range Extender
