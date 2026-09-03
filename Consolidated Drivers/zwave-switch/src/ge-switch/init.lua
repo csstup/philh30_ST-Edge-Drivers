@@ -99,9 +99,14 @@ local GE_SWITCH_FINGERPRINTS = {
   {mfr = 0x0063, prod = 0x4952, model = 0x3331},  -- Enbrighten Switch 59337/ZWA4011DV
   {mfr = 0x0063, prod = 0x4952, model = 0x3333},  -- UltraPro 59347/ZWA4011
   {mfr = 0x0063, prod = 0x4952, model = 0x3334},  -- UltraPro 59368/ZWA4012
+  {mfr = 0x0063, prod = 0x4952, model = 0x3335},  -- JascoPro 59381/ZWA4011 Switch
+  {mfr = 0x0063, prod = 0x4952, model = 0x3336},  -- JascoPro 59382/ZWA4012 Switch
+  {mfr = 0x0063, prod = 0x4952, model = 0x3435},  -- Enbrighten 76591/ZWN4015 Switch
   {mfr = 0x0063, prod = 0x4952, model = 0x3436},  -- UltraPro 76601/ZWN4015 Switch  
+  {mfr = 0x0063, prod = 0x4952, model = 0x3437},  -- JascoPro 76596/ZWN4015 Switch
   {mfr = 0x0063, prod = 0x4952, model = 0x3438},  -- Enbrighten 76592/ZWN4016 Switch  
   {mfr = 0x0063, prod = 0x4952, model = 0x3439},  -- UltraPro 76603/ZWN4016 Switch  
+  {mfr = 0x0063, prod = 0x4952, model = 0x3530},  -- JascoPro 76598/ZWN4016 Switch
   {mfr = 0x0063, prod = 0x4952, model = 0x3534},  -- UltraPro 76605/ZWN4017 Switch
   {mfr = 0x0063, prod = 0x4F44, model = 0x3031},  -- GE Direct-Wire Outdoor Switch 12726
   {mfr = 0x0063, prod = 0x4F44, model = 0x3032},
