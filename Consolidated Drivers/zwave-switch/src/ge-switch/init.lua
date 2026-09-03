@@ -119,11 +119,13 @@ local GE_SWITCH_FINGERPRINTS = {
   {mfr = 0x0063, prod = 0x5044, model = 0x3038},
   {mfr = 0x0063, prod = 0x5044, model = 0x3130},
   {mfr = 0x0063, prod = 0x5044, model = 0x3132},
+  {mfr = 0x0063, prod = 0x5044, model = 0x3137},  -- JascoPro 76723/ZWN3109 Plug In Dimmer
   {mfr = 0x0063, prod = 0x5052, model = 0x3031},
   {mfr = 0x0063, prod = 0x5052, model = 0x3033},
   {mfr = 0x0063, prod = 0x5052, model = 0x3038},
   {mfr = 0x0063, prod = 0x5052, model = 0x3039},  -- GE Plug In Switch 29172
   {mfr = 0x0063, prod = 0x5052, model = 0x3130},
+  {mfr = 0x0063, prod = 0x5052, model = 0x3139},  -- JascoPro 79244/ZWN4109 Plug In Switch
   {mfr = 0x0063, prod = 0x5250, model = 0x3030},  -- GE Plug In Switch 12719
   {mfr = 0x0063, prod = 0x5250, model = 0x3031},  -- GE Plug In Switch
   {mfr = 0x0063, prod = 0x5250, model = 0x3130},  -- GE Plug In Switch 12720
