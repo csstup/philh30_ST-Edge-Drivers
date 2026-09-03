@@ -437,7 +437,7 @@ zwaveManufacturer:
     manufacturerId: 0x0063
     productType: 0x4F44
     productId: 0x3032
-    deviceProfileName: ge-heavyswitch-scene
+    deviceProfileName: ge-heavyswitch-scene-voltage
   - id: "0063/4F50/3031"
     deviceLabel: GE Plug In Switch 12720
     manufacturerId: 0x0063

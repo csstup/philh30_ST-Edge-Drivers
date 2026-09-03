@@ -400,6 +400,7 @@ local ge_switch = {
     capabilities.motionSensor,
     capabilities.energyMeter,
     capabilities.powerMeter,
+    capabilities.voltageMeasurement,
   },
   lifecycle_handlers = {
     infoChanged = info_changed,

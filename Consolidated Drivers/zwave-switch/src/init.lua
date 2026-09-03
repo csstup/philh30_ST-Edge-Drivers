@@ -123,6 +123,7 @@ local driver_template = {
     capabilities.button,
     capabilities.energyMeter,
     capabilities.powerMeter,
+    capabilities.voltageMeasurement,
     capabilities.motionSensor,
     capabilities.illuminanceMeasurement,
     capabilities.temperatureMeasurement,
