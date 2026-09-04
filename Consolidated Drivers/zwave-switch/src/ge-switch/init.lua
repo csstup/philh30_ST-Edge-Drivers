@@ -42,28 +42,28 @@ local splitAssocString = require "split_assoc_string"
 local call_parent_handler = require "call_parent"
 
 local GE_SWITCH_FINGERPRINTS = {
-  {mfr = 0x0063, prod = 0x4450, model = 0x3030},
-  {mfr = 0x0063, prod = 0x4944, model = 0x3031},
-  {mfr = 0x0063, prod = 0x4944, model = 0x3032},
-  {mfr = 0x0063, prod = 0x4944, model = 0x3033},
-  {mfr = 0x0063, prod = 0x4944, model = 0x3034},
-  {mfr = 0x0063, prod = 0x4944, model = 0x3035},
-  {mfr = 0x0063, prod = 0x4944, model = 0x3036},
-  {mfr = 0x0063, prod = 0x4944, model = 0x3037},
-  {mfr = 0x0063, prod = 0x4944, model = 0x3038},
-  {mfr = 0x0063, prod = 0x4944, model = 0x3039},
-  {mfr = 0x0063, prod = 0x4944, model = 0x3130},
-  {mfr = 0x0063, prod = 0x4944, model = 0x3131},
+  {mfr = 0x0063, prod = 0x4450, model = 0x3030},  -- GE Dimmer 45639
+  {mfr = 0x0063, prod = 0x4944, model = 0x3031},  -- GE Dimmer 12724
+  {mfr = 0x0063, prod = 0x4944, model = 0x3032},  -- GE Dimmer 12725
+  {mfr = 0x0063, prod = 0x4944, model = 0x3033},  -- GE Dimmer 12729
+  {mfr = 0x0063, prod = 0x4944, model = 0x3034},  -- GE Fan 12730
+  {mfr = 0x0063, prod = 0x4944, model = 0x3035},  -- GE Dimmer 12733
+  {mfr = 0x0063, prod = 0x4944, model = 0x3036},  -- GE Dimmer 12734
+  {mfr = 0x0063, prod = 0x4944, model = 0x3037},  -- GE Dimmer 12735
+  {mfr = 0x0063, prod = 0x4944, model = 0x3038},  -- GE Dimmer 14294
+  {mfr = 0x0063, prod = 0x4944, model = 0x3039},  -- GE Dimmer 14299
+  {mfr = 0x0063, prod = 0x4944, model = 0x3130},  -- GE Dimmer 14295
+  {mfr = 0x0063, prod = 0x4944, model = 0x3131},  -- GE Fan 14287
   {mfr = 0x0063, prod = 0x4944, model = 0x3132},  -- GE Dimmer 14296
   {mfr = 0x0063, prod = 0x4944, model = 0x3135},  -- GE Dimmer 14321
   {mfr = 0x0063, prod = 0x4944, model = 0x3136},  -- GE Dimmer 14326
-  {mfr = 0x0063, prod = 0x4944, model = 0x3233},
-  {mfr = 0x0063, prod = 0x4944, model = 0x3235},
-  {mfr = 0x0063, prod = 0x4944, model = 0x3237},
-  {mfr = 0x0063, prod = 0x4944, model = 0x3333},
-  {mfr = 0x0063, prod = 0x4944, model = 0x3334},
-  {mfr = 0x0063, prod = 0x4944, model = 0x3337},  -- GE In-Wall Smart Fan Control
-  {mfr = 0x0063, prod = 0x4944, model = 0x3339},
+  {mfr = 0x0063, prod = 0x4944, model = 0x3233},  -- GE Dimmer 14289
+  {mfr = 0x0063, prod = 0x4944, model = 0x3235},  -- GE Dimmer 46203
+  {mfr = 0x0063, prod = 0x4944, model = 0x3237},  -- GE Dimmer 46204
+  {mfr = 0x0063, prod = 0x4944, model = 0x3333},  -- GE Dimmer 52252
+  {mfr = 0x0063, prod = 0x4944, model = 0x3334},  -- GE Dimmer 56590
+  {mfr = 0x0063, prod = 0x4944, model = 0x3337},  -- GE Fan 55258/ZW4002
+  {mfr = 0x0063, prod = 0x4944, model = 0x3339},  -- UltraPro Dimmer 39351
   {mfr = 0x0063, prod = 0x4944, model = 0x3430},  -- Enbrighten Dimmer 58438
   {mfr = 0x0063, prod = 0x4944, model = 0x3431},  -- Enbrighten Dimmer 59335
   {mfr = 0x0063, prod = 0x4944, model = 0x3433},  -- Enbrighten Dimmer 59350/ZWA3016
@@ -73,28 +73,28 @@ local GE_SWITCH_FINGERPRINTS = {
   {mfr = 0x0063, prod = 0x4944, model = 0x3538},  -- Ultrapro Dimmer 76602/ZWN3020
   {mfr = 0x0063, prod = 0x4944, model = 0x3539},  -- JascoPro Dimmer 76597/ZWN3018
   {mfr = 0x0063, prod = 0x4944, model = 0x3630},  -- Enbrighten Dimmer 76595/ZWN3019
-  {mfr = 0x0063, prod = 0x4952, model = 0x3031},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3032},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3033},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3034},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3035},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3036},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3037},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3038},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3130},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3133},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3134},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3135},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3136},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3137},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3138},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3139},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3231},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3233},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3234},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3235},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3237},
-  {mfr = 0x0063, prod = 0x4952, model = 0x3238},
+  {mfr = 0x0063, prod = 0x4952, model = 0x3031},  -- GE Outlet 12721
+  {mfr = 0x0063, prod = 0x4952, model = 0x3032},  -- GE Switch 12722
+  {mfr = 0x0063, prod = 0x4952, model = 0x3033},  -- GE Switch 12727
+  {mfr = 0x0063, prod = 0x4952, model = 0x3034},  -- GE Switch 12731
+  {mfr = 0x0063, prod = 0x4952, model = 0x3035},  -- GE Outlet 14286
+  {mfr = 0x0063, prod = 0x4952, model = 0x3036},  -- GE Switch 14291
+  {mfr = 0x0063, prod = 0x4952, model = 0x3037},  -- GE Switch 14292
+  {mfr = 0x0063, prod = 0x4952, model = 0x3038},  -- GE Switch 14293
+  {mfr = 0x0063, prod = 0x4952, model = 0x3130},  -- GE Switch 14318
+  {mfr = 0x0063, prod = 0x4952, model = 0x3133},  -- GE Outlet 14288
+  {mfr = 0x0063, prod = 0x4952, model = 0x3134},  -- GE Outlet 14288
+  {mfr = 0x0063, prod = 0x4952, model = 0x3135},  -- GE Switch 46201
+  {mfr = 0x0063, prod = 0x4952, model = 0x3136},  -- GE Switch 46562
+  {mfr = 0x0063, prod = 0x4952, model = 0x3137},  -- GE Switch 46202
+  {mfr = 0x0063, prod = 0x4952, model = 0x3138},  -- Jasco Switch 14319/46563/ZW4009
+  {mfr = 0x0063, prod = 0x4952, model = 0x3139},  -- GE Switch 43072
+  {mfr = 0x0063, prod = 0x4952, model = 0x3231},  -- GE Switch 43074
+  {mfr = 0x0063, prod = 0x4952, model = 0x3233},  -- GE Outlet 14297/ZW1002
+  {mfr = 0x0063, prod = 0x4952, model = 0x3234},  -- GE Outlet 55256
+  {mfr = 0x0063, prod = 0x4952, model = 0x3235},  -- GE Outlet 55257
+  {mfr = 0x0063, prod = 0x4952, model = 0x3237},  -- UltraPro Switch 39348
+  {mfr = 0x0063, prod = 0x4952, model = 0x3238},  -- UltraPro Switch 39354
   {mfr = 0x0063, prod = 0x4952, model = 0x3239},  -- Enbrighten Switch 58433
   {mfr = 0x0063, prod = 0x4952, model = 0x3330},  -- GE Smart Toggle Switch 58436
   {mfr = 0x0063, prod = 0x4952, model = 0x3331},  -- Enbrighten Switch 59337/ZWA4011DV
@@ -110,46 +110,46 @@ local GE_SWITCH_FINGERPRINTS = {
   {mfr = 0x0063, prod = 0x4952, model = 0x3530},  -- JascoPro 76598/ZWN4016 Switch
   {mfr = 0x0063, prod = 0x4952, model = 0x3534},  -- UltraPro 76605/ZWN4017 Switch
   {mfr = 0x0063, prod = 0x4F44, model = 0x3031},  -- GE Direct-Wire Outdoor Switch 12726
-  {mfr = 0x0063, prod = 0x4F44, model = 0x3032},
-  {mfr = 0x0063, prod = 0x4F50, model = 0x3031},
-  {mfr = 0x0063, prod = 0x4F50, model = 0x3032},
-  {mfr = 0x0063, prod = 0x4F50, model = 0x3034},
-  {mfr = 0x0063, prod = 0x5044, model = 0x3031},
-  {mfr = 0x0063, prod = 0x5044, model = 0x3033},
+  {mfr = 0x0063, prod = 0x4F44, model = 0x3032},  -- GE Direct-Wire Outdoor Switch 14285
+  {mfr = 0x0063, prod = 0x4F50, model = 0x3031},  -- GE Plug In Switch 12720
+  {mfr = 0x0063, prod = 0x4F50, model = 0x3032},  -- GE Plug In Switch 14284
+  {mfr = 0x0063, prod = 0x4F50, model = 0x3034},  -- GE Plug In Switch 14298
+  {mfr = 0x0063, prod = 0x5044, model = 0x3031},  -- GE Plug In Dimmer 12718
+  {mfr = 0x0063, prod = 0x5044, model = 0x3033},  -- GE Plug In Dimmer 14280
   {mfr = 0x0063, prod = 0x5044, model = 0x3037},  -- GE Plug In Dimmer 28166
-  {mfr = 0x0063, prod = 0x5044, model = 0x3038},
-  {mfr = 0x0063, prod = 0x5044, model = 0x3130},
-  {mfr = 0x0063, prod = 0x5044, model = 0x3132},
+  {mfr = 0x0063, prod = 0x5044, model = 0x3038},  -- GE Plug In Dimmer 28167
+  {mfr = 0x0063, prod = 0x5044, model = 0x3130},  -- GE Plug In Dimmer 28171
+  {mfr = 0x0063, prod = 0x5044, model = 0x3132},  -- GE Plug In Dimmer 28175
   {mfr = 0x0063, prod = 0x5044, model = 0x3137},  -- JascoPro 76723/ZWN3109 Plug In Dimmer
-  {mfr = 0x0063, prod = 0x5052, model = 0x3031},
-  {mfr = 0x0063, prod = 0x5052, model = 0x3033},
-  {mfr = 0x0063, prod = 0x5052, model = 0x3038},
+  {mfr = 0x0063, prod = 0x5052, model = 0x3031},  -- GE Plug In Switch 12719
+  {mfr = 0x0063, prod = 0x5052, model = 0x3033},  -- GE Plug In Switch 14282
+  {mfr = 0x0063, prod = 0x5052, model = 0x3038},  -- GE Plug In Switch 28169
   {mfr = 0x0063, prod = 0x5052, model = 0x3039},  -- GE Plug In Switch 29172
-  {mfr = 0x0063, prod = 0x5052, model = 0x3130},
+  {mfr = 0x0063, prod = 0x5052, model = 0x3130},  -- GE Plug In Switch 28173
   {mfr = 0x0063, prod = 0x5052, model = 0x3139},  -- JascoPro 79244/ZWN4109 Plug In Switch
   {mfr = 0x0063, prod = 0x5250, model = 0x3030},  -- GE Plug In Switch 12719
-  {mfr = 0x0063, prod = 0x5250, model = 0x3031},  -- GE Plug In Switch
+  {mfr = 0x0063, prod = 0x5250, model = 0x3031},  -- GE Plug In Switch ZW4102
   {mfr = 0x0063, prod = 0x5250, model = 0x3130},  -- GE Plug In Switch 12720
   {mfr = 0x0063, prod = 0x5052, model = 0x3132},  -- 28177 GE Plug In Dual
-  {mfr = 0x0063, prod = 0x5252, model = 0x3530},
-  {mfr = 0x0063, prod = 0x5257, model = 0x3533},
+  {mfr = 0x0063, prod = 0x5252, model = 0x3530},  -- GE Outlet 45636
+  {mfr = 0x0063, prod = 0x5257, model = 0x3533},  -- GE Switch 45637
   {mfr = 0x0063, prod = 0x6363, model = 0x3130},  -- GE Plug In Switch 14284
-  {mfr = 0x0039, prod = 0x4944, model = 0x3038},
-  {mfr = 0x0039, prod = 0x4944, model = 0x3130},
-  {mfr = 0x0039, prod = 0x4944, model = 0x3131},
-  {mfr = 0x0039, prod = 0x4944, model = 0x3235},
-  {mfr = 0x0039, prod = 0x4944, model = 0x3237},
-  {mfr = 0x0039, prod = 0x4952, model = 0x3036},
-  {mfr = 0x0039, prod = 0x4952, model = 0x3037},
-  {mfr = 0x0039, prod = 0x4952, model = 0x3133},
-  {mfr = 0x0039, prod = 0x4952, model = 0x3135},
-  {mfr = 0x0039, prod = 0x4952, model = 0x3137},
-  {mfr = 0x0039, prod = 0x4F50, model = 0x3032},
-  {mfr = 0x0039, prod = 0x4F50, model = 0x3034},
-  {mfr = 0x0039, prod = 0x5044, model = 0x3033},
-  {mfr = 0x0039, prod = 0x5044, model = 0x3038},
-  {mfr = 0x0039, prod = 0x5052, model = 0x3033},
-  {mfr = 0x0039, prod = 0x5052, model = 0x3038},
+  {mfr = 0x0039, prod = 0x4944, model = 0x3038},  -- Honeywell Dimmer 39458
+  {mfr = 0x0039, prod = 0x4944, model = 0x3130},  -- Honeywell Dimmer 39357
+  {mfr = 0x0039, prod = 0x4944, model = 0x3131},  -- Honeywell Fan 39358
+  {mfr = 0x0039, prod = 0x4944, model = 0x3235},  -- Honeywell Dimmer 46203
+  {mfr = 0x0039, prod = 0x4944, model = 0x3237},  -- Honeywell Dimmer 39357
+  {mfr = 0x0039, prod = 0x4952, model = 0x3036},  -- Honeywell Switch 39455
+  {mfr = 0x0039, prod = 0x4952, model = 0x3037},  -- Honeywell Switch 39354
+  {mfr = 0x0039, prod = 0x4952, model = 0x3133},  -- Honeywell Outlet 39456
+  {mfr = 0x0039, prod = 0x4952, model = 0x3135},  -- Honeywell Switch 39348
+  {mfr = 0x0039, prod = 0x4952, model = 0x3137},  -- Honeywell Switch 39354
+  {mfr = 0x0039, prod = 0x4F50, model = 0x3032},  -- Honeywell Plug In Switch 39346
+  {mfr = 0x0039, prod = 0x4F50, model = 0x3034},  -- Honeywell Plug In Switch 39363
+  {mfr = 0x0039, prod = 0x5044, model = 0x3033},  -- Honeywell Plug In Dimmer 39446
+  {mfr = 0x0039, prod = 0x5044, model = 0x3038},  -- Honeywell Plug In Dimmer 39443
+  {mfr = 0x0039, prod = 0x5052, model = 0x3033},  -- Honeywell Plug In Switch 39449
+  {mfr = 0x0039, prod = 0x5052, model = 0x3038},  -- Honeywell Plug In Switch 39444
 }
 
 --- Determine whether the passed device is a 3-speed fan
