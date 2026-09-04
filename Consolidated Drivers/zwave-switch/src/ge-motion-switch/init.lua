@@ -45,10 +45,10 @@ local LightSensing = capdefs.LightSensing.capability
 local DefaultLevel = capdefs.DefaultLevel.capability
 
 local GE_MOTION_SWITCH_FINGERPRINTS = {
-  {mfr = 0x0063, prod = 0x494D, model = 0x3031},
-  {mfr = 0x0063, prod = 0x494D, model = 0x3032},
-  {mfr = 0x0063, prod = 0x494D, model = 0x3033},
-  {mfr = 0x0063, prod = 0x494D, model = 0x3034},
+  {mfr = 0x0063, prod = 0x494D, model = 0x3031},  -- GE Motion Switch 24770/ZW4006
+  {mfr = 0x0063, prod = 0x494D, model = 0x3032},  -- GE Motion Switch 26931/ZW4006
+  {mfr = 0x0063, prod = 0x494D, model = 0x3033},  -- GE Motion Dimmer 26932
+  {mfr = 0x0063, prod = 0x494D, model = 0x3034},  -- GE Motion Dimmer 26933
 }
 
 --- Determine whether the passed device is a 3-speed fan
