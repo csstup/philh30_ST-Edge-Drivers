@@ -186,6 +186,12 @@ zwaveManufacturer:
     productType: 0x4944
     productId: 0x3539
     deviceProfileName: ge-dimmer-scene
+  - id: "0063/4944/3630"  # 76595/ZWN3019
+    deviceLabel: Enbrighten Dimmer 76595
+    manufacturerId: 0x0063
+    productType: 0x4944
+    productId: 0x3630
+    deviceProfileName: ge-dimmer-scene
   - id: "0063/494D/3031"
     deviceLabel: GE Motion Switch 24770
     manufacturerId: 0x0063

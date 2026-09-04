@@ -72,6 +72,7 @@ local GE_SWITCH_FINGERPRINTS = {
   {mfr = 0x0063, prod = 0x4944, model = 0x3537},  -- Enbrighten Dimmer 76593/ZWN3018
   {mfr = 0x0063, prod = 0x4944, model = 0x3538},  -- Ultrapro Dimmer 76602/ZWN3020
   {mfr = 0x0063, prod = 0x4944, model = 0x3539},  -- JascoPro Dimmer 76597/ZWN3018
+  {mfr = 0x0063, prod = 0x4944, model = 0x3630},  -- Enbrighten Dimmer 76595/ZWN3019
   {mfr = 0x0063, prod = 0x4952, model = 0x3031},
   {mfr = 0x0063, prod = 0x4952, model = 0x3032},
   {mfr = 0x0063, prod = 0x4952, model = 0x3033},
