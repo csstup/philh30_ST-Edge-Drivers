@@ -36,6 +36,13 @@ zwaveManufacturer:
     productType: 0x0005
     productId: 0x0010
     deviceProfileName: ecolink-flood-5
+# Everspring    
+  - id: "0060/0006/0001"
+    deviceLabel: Everspring ST814 Temp/Humidity Sensor
+    manufacturerId: 0x0060
+    productType: 0x0006
+    productId: 0x0001
+    deviceProfileName: temp-humidity-battery    
 # FortrezZ
   - id: "0084/0053/0216"
     deviceLabel: FortrezZ Temperature and Leak Sensor
