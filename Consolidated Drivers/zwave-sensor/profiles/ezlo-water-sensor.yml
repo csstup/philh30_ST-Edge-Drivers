@@ -1,0 +1,157 @@
+name: ezlo-water-sensor
+components:
+  - id: main
+    capabilities:
+      - id: waterSensor
+        version: 1
+      - id: temperatureMeasurement
+        version: 1
+      - id: battery
+        version: 1
+      - id: tamperAlert
+        version: 1
+      - id: temperatureAlarm
+        version: 1
+    categories:
+      - name: LeakSensor
+preferences:
+  - name: wakeUpInterval
+    title: "Wake Up Interval"
+    description: "During wakeup the sensor can receive setting changes and battery requests. Default: every hour."
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        3600: "Every hour"
+        7200: "Every 2 hours"
+        10800: "Every 3 hours"
+        14400: "Every 4 hours"
+        21600: "Every 6 hours"
+        28800: "Every 8 hours"
+        43200: "Every 12 hours"
+        86400: "Every 24 hours"
+      default: 3600
+  - name: batteryInterval
+    title: "Battery Update Interval"
+    description: "How often the driver requests battery status during wakeup. Independent of Automatic Battery Reports. Default: every wakeup."
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        0: "Disabled"
+        1: "Every wakeup"
+        2: "Every other wakeup"
+        3: "Every 3rd wakeup"
+        4: "Every 4th wakeup"
+        101: "Once per day maximum"
+      default: 1
+  - name: leakReportInterval   # P17 - Flood alarm repeat interval
+    title: "Flood Alarm Repeat Interval"
+    description: "Minutes between repeated flood alarms (0-240). 0 = no repeated notifications. Default: 5 minutes."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 240
+      default: 5
+  - name: movementAlarm   # P18 - Enable movement / tamper alarm
+    title: "Movement / Tamper Alarm"
+    description: "Report movement of the sensor as a tamper alert. Default: enabled."
+    required: true
+    preferenceType: boolean
+    definition:
+      default: true
+  - name: tempReportInterval   # P19 - Periodic temperature report interval in units of 10 minutes
+    title: "Temperature Report Interval"
+    description: "How often the sensor sends periodic temperature readings. Default: every 24 hours."
+    required: true
+    preferenceType: enumeration
+    definition:
+      options:
+        3: "Every 30 minutes"
+        6: "Every hour"
+        12: "Every 2 hours"
+        18: "Every 3 hours"
+        24: "Every 4 hours"
+        36: "Every 6 hours"
+        48: "Every 8 hours"
+        72: "Every 12 hours"
+        144: "Every 24 hours"
+        240: "Every 40 hours"
+      default: 144
+  - name: tempReportThreshold   # P21 - Temperature change reporting threshold in tenths of a degree Fahrenheit
+    title: "Temperature Change Reporting"
+    description: "Temperature change that triggers a report. Divide the entered value by 10 for degrees Fahrenheit: 18 = 1.8 F, 5 = 0.5 F. 0 disables reporting. Default: 18 (1.8 F). Valid values: 18-180."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 180
+      default: 18
+  - name: tempTriggerHighValue   # P20 - High temperature alarm threshold
+    title: "High Temperature Alarm (F)"
+    description: "Sensor temperature that triggers a high temperature alarm (-67 to 257 F). SmartThings temperature offset does not affect this threshold. Default: 104 F."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: -67
+      maximum: 257
+      default: 104
+  - name: tempTriggerLowValue   # P22 - Low temperature alarm threshold
+    title: "Low Temperature Alarm (F)"
+    description: "Sensor temperature that triggers a low temperature alarm (-67 to 257 F). SmartThings temperature offset does not affect this threshold. Default: 32 F."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: -67
+      maximum: 257
+      default: 32
+  - name: blinkLEDAlarm   # P24 - Blink LED during alarms
+    title: "Blink LED During Alarms"
+    description: "Blink the sensor LED when an alarm is triggered. Default: enabled."
+    required: true
+    preferenceType: boolean
+    definition:
+      default: true
+  - name: lowBatteryLevel   # P32 - Low battery alarm threshold
+    title: "Low Battery Alert Threshold"
+    description: "Battery percentage that triggers a low battery alert (10-50%). Default: 20%."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 10
+      maximum: 50
+      default: 20
+  - name: batteryReportInterval   # P33 - Automatic battery report interval
+    title: "Automatic Battery Reports"
+    description: "Hours between battery reports sent by the sensor (1-168), or 0 to disable. Independent of driver battery requests during wakeup. Default: 4 hours."
+    required: true
+    preferenceType: integer
+    definition:
+      minimum: 0
+      maximum: 168
+      default: 4
+  - name: basicSetCommand   # P14 - Enable BASIC SET commands to Group 2
+    title: "Control Associated Devices on Flood"
+    description: "Send on/off commands to Association Group 2 when flooding starts or clears. Default: disabled."
+    required: true
+    preferenceType: boolean
+    definition:
+      default: false
+  - name: reverseBasicSet   # P15 - Reverse BASIC SET values
+    title: "Reverse Flood Control Commands"
+    description: "When enabled, send OFF on flooding and ON when dry to Group 2. Otherwise send ON on flooding and OFF when dry. Default: disabled."
+    required: true
+    preferenceType: boolean
+    definition:
+      default: false
+  - name: assocGroup2
+    title: "Association Group 2 (BASIC SET)"
+    description: "Comma-separated hexadecimal node IDs for BASIC SET on/off commands; up to 5 devices. Enable Control Associated Devices on Flood to send commands."
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      default: ""
+  - preferenceId: tempOffset
+    explicit: true

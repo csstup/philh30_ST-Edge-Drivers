@@ -36,6 +36,31 @@ preferences.temp_multiplier = function(temp)
 end
 
 local devices = {
+  EZLO_WATER_SENSOR = {
+    -- Ezlo Z-Wave Flood Sensor installation manual, Advanced Configuration:
+    -- https://support.ezlo.com/hc/en-us/articles/27965179608220
+    MATCHING_MATRIX = {
+      mfrs          = 0x025B,
+      product_types = 0x0201,
+      product_ids   = 0x000F
+    },
+    PARAMETERS = {
+      basicSetCommand      = { type = 'config', parameter_number = 14, size = 1 },
+      reverseBasicSet      = { type = 'config', parameter_number = 15, size = 1 },
+      -- P16 is intentionally omitted; use SmartThings tempOffset instead.
+      leakReportInterval   = { type = 'config', parameter_number = 17, size = 1 },
+      movementAlarm        = { type = 'config', parameter_number = 18, size = 1 },
+      tempReportInterval   = { type = 'config', parameter_number = 19, size = 1 },
+      tempTriggerHighValue = { type = 'config', parameter_number = 20, size = 2, conversion = preferences.temp_multiplier },
+      tempReportThreshold  = { type = 'config', parameter_number = 21, size = 1 },
+      tempTriggerLowValue  = { type = 'config', parameter_number = 22, size = 2, conversion = preferences.temp_multiplier },
+      blinkLEDAlarm        = { type = 'config', parameter_number = 24, size = 1 },
+      lowBatteryLevel      = { type = 'config', parameter_number = 32, size = 1 },
+      batteryReportInterval = { type = 'config', parameter_number = 33, size = 1 },
+      wakeUpInterval       = { type = 'wakeup' }, -- Seconds, also used by battery.lua.
+      assocGroup2          = { type = 'assoc', group = 2, maxnodes = 5, addhub = false }
+    }
+  },
   WAKEUP_ONLY = { -- FortrezZ Leak (0084/0053/0216), Ecolink Flood (014A/0005/0010 & 014A/0005/000F)
     MATCHING_MATRIX = {
       mfrs          = {0x0084,0x014A},
@@ -301,7 +326,7 @@ preferences.update_preferences = function(driver, device, args)
           new_parameter_value = ((new_parameter_value >= (256^size)/2) and (new_parameter_value < 256^size)) and (new_parameter_value-256^size) or new_parameter_value
           device:send(Configuration:Set({parameter_number = prefs[id].parameter_number, size = size, configuration_value = new_parameter_value}))
           table.insert(get_params, prefs[id].parameter_number)
-        elseif prefs[id].type == 'wakeup' and device:is_cc_supported(cc.WAKEUP) then
+        elseif prefs[id].type == 'wakeup' and device:is_cc_supported(cc.WAKE_UP) then
           local wakeUpInterval = preferences.to_numeric_value(device.preferences[id])
           if type(prefs[id].conversion) == "function" then
             wakeUpInterval = prefs[id].conversion(wakeUpInterval)

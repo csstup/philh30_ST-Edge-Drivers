@@ -43,6 +43,13 @@ zwaveManufacturer:
     productType: 0x0006
     productId: 0x0001
     deviceProfileName: temp-humidity-battery    
+# Ezlo
+  - id: "025B/0201/000F"
+    deviceLabel: Ezlo Water Sensor
+    manufacturerId: 0x025B
+    productType: 0x0201
+    productId: 0x000F
+    deviceProfileName: ezlo-water-sensor
 # FortrezZ
   - id: "0084/0053/0216"
     deviceLabel: FortrezZ Temperature and Leak Sensor
