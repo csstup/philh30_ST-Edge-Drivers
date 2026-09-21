@@ -8,8 +8,6 @@ components:
         version: 1
       - id: battery
         version: 1
-      - id: tamperAlert
-        version: 1
       - id: temperatureAlarm
         version: 1
     categories:
@@ -54,9 +52,9 @@ preferences:
       minimum: 0
       maximum: 240
       default: 5
-  - name: movementAlarm   # P18 - Enable movement / tamper alarm
-    title: "Movement / Tamper Alarm"
-    description: "Report movement of the sensor as a tamper alert. Default: enabled."
+  - name: movementAlarm   # P18 - Enable movement alarm
+    title: "Movement Alarm"
+    description: "Enable the sensor's movement alarm. Default: enabled."
     required: true
     preferenceType: boolean
     definition:

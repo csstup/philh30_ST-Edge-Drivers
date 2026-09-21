@@ -40,10 +40,6 @@ local function notification_test(name, notification_type, event, expected)
   })
 end
 
-notification_test("Ezlo product moved reports tamper", Notification.notification_type.HOME_SECURITY,
-  Notification.event.home_security.TAMPERING_PRODUCT_MOVED, capabilities.tamperAlert.tamper.detected())
-notification_test("Ezlo idle clears tamper", Notification.notification_type.HOME_SECURITY,
-  Notification.event.home_security.STATE_IDLE, capabilities.tamperAlert.tamper.clear())
 notification_test("Ezlo leak reports wet", Notification.notification_type.WATER,
   Notification.event.water.LEAK_DETECTED, capabilities.waterSensor.water.wet())
 
