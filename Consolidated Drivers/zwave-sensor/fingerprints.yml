@@ -92,6 +92,12 @@ zwaveManufacturer:
     productId: 0x3433
     deviceProfileName: jascopro-water-leak
 # Ring
+  - id: 0346/0501/0101
+    deviceLabel: Ring Flood and Freeze Sensor
+    manufacturerId: 0x0346
+    productType: 0x0501
+    productId: 0x0101
+    deviceProfileName: ring-flood-freeze
   - id: 0346/0401/0101
     deviceLabel: Ring Range Extender
     manufacturerId: 0x0346

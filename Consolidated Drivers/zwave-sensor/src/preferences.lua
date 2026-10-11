@@ -36,6 +36,19 @@ preferences.temp_multiplier = function(temp)
 end
 
 local devices = {
+  RING_FLOOD_FREEZE = {
+    MATCHING_MATRIX = {
+      mfrs = 0x0346,
+      product_types = 0x0501,
+      product_ids = 0x0101
+    },
+    PARAMETERS = {
+      -- Heartbeat units are seconds and P1 is TWO bytes on this model.
+      heartbeats = { type = 'config', parameter_number = 1, size = 2 },
+      -- P2 is a self-resetting one-shot timer, not a persistent preference.
+      wakeUpInterval = { type = 'wakeup' },
+    }
+  },
   EZLO_WATER_SENSOR = {
     -- Ezlo Z-Wave Flood Sensor installation manual, Advanced Configuration:
     -- https://support.ezlo.com/hc/en-us/articles/27965179608220
