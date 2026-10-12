@@ -1,4 +1,9 @@
 zigbeeManufacturer:
+  - id: "Jasco Products/43080"
+    deviceLabel: Enbrighten Dimmer 43080
+    manufacturer: Jasco Products
+    model: "43080"
+    deviceProfileName: ge-dimmer
   - id: "Jasco Products/45856"
     deviceLabel: Jasco Switch 45856
     manufacturer: Jasco Products
