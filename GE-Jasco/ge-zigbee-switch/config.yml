@@ -1,4 +1,5 @@
-name: 'GE Zigbee Switch'
-packageKey: 'ge-zigbee-switch'
+name: 'Zigbee Switch CS'
+packageKey: 'zigbee-switch-cs'
+description: 'Zigbee switch driver by csstup, originally by philh30.'
 permissions:
   zigbee: {}
